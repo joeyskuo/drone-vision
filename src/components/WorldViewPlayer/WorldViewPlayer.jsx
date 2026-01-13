@@ -1,6 +1,10 @@
 const WorldViewPlayer = () => {
     return (
-        <div>WorldViewPlayer</div>
+        <figure className="world-view-player">
+            <video controls width="100%">
+                <source src="/videos/world.mp4" type="video/mp4" />
+            </video>
+        </figure>
     )
 };
 
