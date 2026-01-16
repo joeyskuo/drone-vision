@@ -1,5 +1,10 @@
+import { useState } from 'react';
+import { detectRoundObjects } from '../../ml/objectDetector';
+
 const ImageProcessingContainer = () => {
-    
+
+    const [result, setResult] = useState({});
+
     function captureFrame() {
         const CameraViewVideo = document.querySelector('.camera-view-player video');
 
@@ -23,12 +28,34 @@ const ImageProcessingContainer = () => {
         container.appendChild(frameImage);
     }
 
+    const handleDetect = async () => {
+
+        let imgRef = document.querySelector('.captured-frame-container img');
+
+        try {
+          const detection = await detectRoundObjects(imgRef);
+          setResult(detection);
+        } catch (error) {
+          console.error('Detection error:', error);
+        }
+      };
+
     return (
         <div>
             <div>ImageProcessingContainer</div>
             <div>Captured Image Here</div>
             <div className='captured-frame-container'></div>
+            <div>`is circle detected? - {result?.hasRoundObject?.toString()}`</div>
+            {result?.probabilities?.map((prob, index) => (
+                <div key={index}>
+                    <p><strong>Object:</strong> {prob.object}</p>
+                    <p><strong>Confidence:</strong> {prob.confidence}</p>
+                </div>
+            ))}
             <button onClick={captureFrame}>Capture</button>
+            <button onClick={handleDetect}>
+                Detect
+            </button>
         </div>
     )
 };
