@@ -17,35 +17,10 @@ async function loadModel() {
 export async function detectRoundObjects(imgElement) {
   const model = await loadModel();
   const predictions = await model.detect(imgElement);
-  
-  // Round object classes from COCO dataset
-  const roundClasses = [
-    'sports ball',
-    'orange',
-    'apple',
-    'clock',
-    'frisbee',
-    'donut',
-    'pizza',
-    'ball'
-  ];
-  
-  // Filter for round objects
-  const roundObjects = predictions.filter(pred => 
-    roundClasses.includes(pred.class)
-  );
-  
-  // Return results
-  if (roundObjects.length === 0) {
-    return {
-      hasRoundObject: false,
-      probabilities: []
-    };
-  }
-  
+  console.log(predictions);
+
   return {
-    hasRoundObject: true,
-    probabilities: roundObjects.map(obj => ({
+    probabilities: predictions.map(obj => ({
       object: obj.class,
       confidence: (obj.score * 100).toFixed(1) + '%',
       score: obj.score
