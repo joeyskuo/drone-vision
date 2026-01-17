@@ -45,7 +45,6 @@ const ImageProcessingContainer = () => {
             <div>ImageProcessingContainer</div>
             <div>Captured Image Here</div>
             <div className='captured-frame-container'></div>
-            <div>`is circle detected? - {result?.hasRoundObject?.toString()}`</div>
             {result?.probabilities?.map((prob, index) => (
                 <div key={index}>
                     <p><strong>Object:</strong> {prob.object}</p>
