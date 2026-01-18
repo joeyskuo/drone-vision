@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { detectRoundObjects } from '../../ml/objectDetector';
+import { AppContext } from '../../context/AppContext';
 
 const ImageProcessingContainer = () => {
 
-    const [result, setResult] = useState({});
+    const { setAppState } = useContext(AppContext);
 
+    const [result, setResult] = useState({});
+    
     function captureFrame() {
         const CameraViewVideo = document.querySelector('.camera-view-player video');
 
@@ -34,6 +37,7 @@ const ImageProcessingContainer = () => {
 
         try {
           const detection = await detectRoundObjects(imgRef);
+          setAppState(detection);
           setResult(detection);
         } catch (error) {
           console.error('Detection error:', error);
