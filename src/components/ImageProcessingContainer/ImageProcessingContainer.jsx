@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { detectRoundObjects } from '../../ml/objectDetector';
 import { AppContext } from '../../context/AppContext';
+import './ImageProcessingContainer.css';
 
 const ImageProcessingContainer = () => {
 
@@ -46,10 +47,14 @@ const ImageProcessingContainer = () => {
 
     return (
         <div>
-            <button onClick={captureFrame}>Capture</button>
-            <button onClick={handleDetect}>
-                Detect
-            </button>
+            <div className='image-process-buttons'>
+                <button onClick={captureFrame}>
+                    Capture
+                </button>
+                <button onClick={handleDetect}>
+                    Detect
+                </button>
+            </div>
             <h3>Captured Frame</h3>
             <div className='captured-frame-container'></div>
         </div>
