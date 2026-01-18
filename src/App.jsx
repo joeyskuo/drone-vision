@@ -1,11 +1,14 @@
 import './App.css'
 import MainLayout from './components/MainLayout.jsx/MainLayout'
+import { AppProvider } from './context/AppContext'
 
 function App() {
 
   return (
     <>
-      <MainLayout/>
+      <AppProvider>
+        <MainLayout/>
+      </AppProvider>
     </>
   )
 }
