@@ -1,6 +1,7 @@
 const CameraViewPlayer = () => {
     return (
         <figure className="camera-view-player">
+            <figcaption>Drone Camera</figcaption>
             <video controls width="100%">
                 <source src="/videos/shapes.mp4" type="video/mp4" />
             </video>
