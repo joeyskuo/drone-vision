@@ -42,8 +42,11 @@ const ImageProcessingContainer = () => {
 
     return (
         <div>
-            <div>ImageProcessingContainer</div>
-            <div>Captured Image Here</div>
+            <button onClick={captureFrame}>Capture</button>
+            <button onClick={handleDetect}>
+                Detect
+            </button>
+            <h3>Captured Frame</h3>
             <div className='captured-frame-container'></div>
             {result?.probabilities?.map((prob, index) => (
                 <div key={index}>
@@ -51,10 +54,7 @@ const ImageProcessingContainer = () => {
                     <p><strong>Confidence:</strong> {prob.confidence}</p>
                 </div>
             ))}
-            <button onClick={captureFrame}>Capture</button>
-            <button onClick={handleDetect}>
-                Detect
-            </button>
+
         </div>
     )
 };
