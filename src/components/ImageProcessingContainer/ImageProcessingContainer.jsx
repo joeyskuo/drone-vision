@@ -52,13 +52,6 @@ const ImageProcessingContainer = () => {
             </button>
             <h3>Captured Frame</h3>
             <div className='captured-frame-container'></div>
-            {result?.probabilities?.map((prob, index) => (
-                <div key={index}>
-                    <p><strong>Object:</strong> {prob.object}</p>
-                    <p><strong>Confidence:</strong> {prob.confidence}</p>
-                </div>
-            ))}
-
         </div>
     )
 };
