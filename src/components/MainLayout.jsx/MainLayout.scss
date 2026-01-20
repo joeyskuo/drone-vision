@@ -1,0 +1,39 @@
+#main-layout {
+    display: grid;
+    grid-template-rows: .5fr 1fr 1fr 1fr;
+    gap: 30px
+}
+
+.title-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    figure {
+        height: 200px;
+        width: 200px;
+    }
+}
+
+.image-process-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 250px;
+
+    .image-process-output {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        .captured-frame-container {
+            max-height: 200px;
+            max-width: 200px;
+        }
+    }
+}
