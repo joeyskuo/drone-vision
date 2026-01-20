@@ -37,3 +37,19 @@
         }
     }
 }
+
+.repo-section {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    article {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        a {
+            color: white;
+        }
+    }
+}
