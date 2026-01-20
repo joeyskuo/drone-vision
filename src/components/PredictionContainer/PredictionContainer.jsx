@@ -8,7 +8,7 @@ const PredictionContainer = () => {
     console.log(appState);
 
     return (
-        <div>
+        <div className="prediction-container">
             <h3>Predictions</h3>
             <div>
                 {appState?.probabilities?.map((prob, index) => (
