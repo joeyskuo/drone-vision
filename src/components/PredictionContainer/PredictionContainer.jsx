@@ -10,7 +10,7 @@ const PredictionContainer = () => {
     return (
         <div className="prediction-container">
             <h3>Predictions</h3>
-            <div>
+            <div className="prediction-container-results">
                 {appState?.probabilities?.map((prob, index) => (
                     <div key={index}>
                         <p><strong>Object:</strong> {prob.object}</p>
