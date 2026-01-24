@@ -28,14 +28,14 @@ const ImageProcessingContainer = () => {
         frameImage.style.width = '100%';
         
         // Clear container and add image
-        const container = document.querySelector('.captured-frame-container');
+        const container = document.querySelector('.captured-frame-root');
         container.innerHTML = '';
         container.appendChild(frameImage);
     }
 
     const handleDetect = async () => {
 
-        let imgRef = document.querySelector('.captured-frame-container img');
+        let imgRef = document.querySelector('.captured-frame-root img');
 
         try {
           const detection = await detectRoundObjects(imgRef);
@@ -57,9 +57,11 @@ const ImageProcessingContainer = () => {
                 </button>
             </div>
             <div className="image-process-output">
-                <div>
+                <div className='captured-frame-container'>
                     <h3>Captured Frame</h3>
-                    <div className='captured-frame-container'></div>
+                    <div className='captured-frame-root'>
+                        <div className='image-placeholder'></div>
+                    </div>
                 </div>
                 <PredictionContainer/>
             </div>
