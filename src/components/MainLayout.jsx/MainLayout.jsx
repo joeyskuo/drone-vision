@@ -8,11 +8,9 @@ const MainLayout = () => {
     return (
         <div id="main-layout">
             <section className="title-section">
-                <div>
-                    <h1>Drone Vision</h1>
-                    <p>Simulation and Image Processing</p>
-                    <div>ROS2 &middot; Gazebo &middot; TensorFlow</div>
-                </div>
+                <h1>Drone Vision</h1>
+                <h2>Simulation and Image Processing</h2>
+                <div>ROS2 &middot; Gazebo &middot; TensorFlow</div>
             </section>
             <section className="video-section">
                 <CameraViewPlayer/>
