@@ -27,7 +27,7 @@ const MainLayout = () => {
                         <div><strong>Pending</strong></div>
                         <ul>
                             <li>aerial drone model and movement</li>
-                            <li>custom machine learning model</li>
+                            <li>custom machine learning model (YOLOv8)</li>
                         </ul>
                     </div>
                 </section>
@@ -35,15 +35,23 @@ const MainLayout = () => {
                     <h3>Modules</h3>
                     <article>
                         <div>ROS2 Drone Workspace (Gazebo, RViz, TF, Xacro)</div>
-                        <a href="http://github.com">Repo</a>
+                        <a href="https://github.com/joeyskuo/drone-feed">Repo</a>
                     </article>
                     <article>
-                        <div>Image Processing ML Model</div>
-                        <a href="http://github.com">Repo</a>
+                        <div>Image Processing ML Model (YOLOv8, Colab, Kaggle)</div>
+                        <a href="https://github.com/joeyskuo/yolov8s-football-detect">Repo</a>
                     </article>
                     <article>
                         <div>Web App (React, Tensorflow, Vite, SCSS)</div>
-                        <a href="http://github.com">Repo</a>
+                        <a href="https://github.com/joeyskuo/drone-vision">Repo</a>
+                    </article>
+                    <article>
+                        <div>Image Processing API (FastAPI)</div>
+                        <a href="#" className="inactive-link">WIP</a>
+                    </article>
+                    <article>
+                        <div>BFF Layer (Node, Express)</div>
+                        <a href="#" className="inactive-link">WIP</a>
                     </article>
                 </section>
             </section>
