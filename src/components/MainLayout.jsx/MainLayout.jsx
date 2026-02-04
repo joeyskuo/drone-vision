@@ -22,7 +22,7 @@ const MainLayout = () => {
             <section className="about-section">
                 <section className="project-description-section">
                     <h3>Project Description</h3>
-                    <p>A drone is operated in a simulated world, and images from its camera feed are run through a pre-trained object detection model</p>
+                    <p>A drone is operated in a simulated world, and images from its camera feed are run through a pre-trained object detection model (COCO-SSD)</p>
                     <div>
                         <div><strong>Pending</strong></div>
                         <ul>
