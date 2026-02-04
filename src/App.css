@@ -3,3 +3,7 @@
   max-width: 1280px;
   height: 100%;
 }
+
+.inactive-link {
+  pointer-events: none;
+}
