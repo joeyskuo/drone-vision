@@ -1,6 +1,7 @@
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-backend-webgl';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
+import axios from 'axios';
 
 let model = null;
 
@@ -26,4 +27,22 @@ export async function detectRoundObjects(imgElement) {
       score: obj.score
     }))
   };
+}
+
+export async function detectObjects(imgElement) {
+  const response = await fetch(imgElement.src);
+  const blob = await response.blob();
+  const formData = new FormData();
+  formData.append('file', blob, 'image.jpg');
+
+  const detections = await axios.post('http://localhost:3000/detect', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    },
+    responseType: 'blob'
+  });
+
+  const imageUrl = URL.createObjectURL(detections.data);
+  const div = document.querySelector('.prediction-container-results');
+  div.innerHTML = `<img src="${imageUrl}" alt="Result">`;
 }
