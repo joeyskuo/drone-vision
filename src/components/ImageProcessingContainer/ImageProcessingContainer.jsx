@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { detectRoundObjects } from '../../ml/objectDetector';
+import { detectRoundObjects, detectObjects } from '../../ml/objectDetector';
 import { AppContext } from '../../context/AppContext';
 import PredictionContainer from '../PredictionContainer/PredictionContainer';
 import './ImageProcessingContainer.css';
@@ -38,9 +38,7 @@ const ImageProcessingContainer = () => {
         let imgRef = document.querySelector('.captured-frame-root img');
 
         try {
-          const detection = await detectRoundObjects(imgRef);
-          setAppState(detection);
-          setResult(detection);
+          await detectObjects(imgRef);
         } catch (error) {
           console.error('Detection error:', error);
         }
