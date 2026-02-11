@@ -5,8 +5,6 @@ const PredictionContainer = () => {
 
     const { appState } = useContext(AppContext);
     
-    console.log(appState);
-
     return (
         <div className="prediction-container">
             <h3>Predictions</h3>
