@@ -2,6 +2,7 @@ import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-backend-webgl';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import axios from 'axios';
+const BFF_ENDPOINT = import.meta.env.VITE_BFF_ENDPOINT;
 
 let model = null;
 
@@ -35,7 +36,7 @@ export async function detectObjects(imgElement) {
   const formData = new FormData();
   formData.append('file', blob, 'image.jpg');
 
-  const detections = await axios.post('http://localhost:3000/detect', formData, {
+  const detections = await axios.post(BFF_ENDPOINT, formData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     },
