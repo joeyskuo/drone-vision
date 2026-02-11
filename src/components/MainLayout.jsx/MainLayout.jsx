@@ -28,7 +28,7 @@ const MainLayout = () => {
                         <div><strong>Pending</strong></div>
                         <ul>
                             <li>aerial drone model and movement</li>
-                            <li>custom machine learning model (YOLOv8)</li>
+                            <li>backend optimizations (error handling, faster cold start, security)</li>
                         </ul>
                     </div>
                 </section>
