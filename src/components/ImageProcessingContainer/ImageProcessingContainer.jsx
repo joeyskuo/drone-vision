@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { detectRoundObjects, detectObjects } from '../../ml/objectDetector';
+import { detectObjects } from '../../ml/objectDetector';
 import { AppContext } from '../../context/AppContext';
 import PredictionContainer from '../PredictionContainer/PredictionContainer';
 import './ImageProcessingContainer.css';
