@@ -2,6 +2,7 @@ import CameraViewPlayer from "../CameraViewPlayer/CameraViewPlayer";
 import ImageProcessingContainer from "../ImageProcessingContainer/ImageProcessingContainer";
 import PredictionContainer from "../PredictionContainer/PredictionContainer";
 import WorldViewPlayer from "../WorldViewPlayer/WorldViewPlayer";
+import RepoInfo from "../RepoInfo/RepoInfo";
 import './MainLayout.scss';
 
 const MainLayout = () => {
@@ -33,26 +34,31 @@ const MainLayout = () => {
                 </section>
                 <section className="repo-section">
                     <h3>Modules</h3>
-                    <article>
-                        <div>ROS2 Drone Workspace (Gazebo, RViz, TF, Xacro)</div>
-                        <a href="https://github.com/joeyskuo/drone-feed">Repo</a>
-                    </article>
-                    <article>
-                        <div>Image Processing ML Model (YOLOv8, Colab, Kaggle)</div>
-                        <a href="https://github.com/joeyskuo/yolov8s-football-detect">Repo</a>
-                    </article>
-                    <article>
-                        <div>Web App (React, Tensorflow, Vite, SCSS)</div>
-                        <a href="https://github.com/joeyskuo/drone-vision">Repo</a>
-                    </article>
-                    <article>
-                        <div>Image Processing API (FastAPI)</div>
-                        <a href="#" className="inactive-link">WIP</a>
-                    </article>
-                    <article>
-                        <div>BFF Layer (Node, Express)</div>
-                        <a href="#" className="inactive-link">WIP</a>
-                    </article>
+                    <RepoInfo
+                        label="ROS2 Drone Workspace"
+                        details="Gazebo, RViz, TF, Xacro"
+                        link="https://github.com/joeyskuo/drone-feed"
+                    />
+                    <RepoInfo
+                        label="Image Processing ML Model"
+                        details="YOLOv8, Colab, Kaggle"
+                        link="https://github.com/joeyskuo/yolov8s-football-detect"
+                    />
+                    <RepoInfo
+                        label="Web App"
+                        details="React, Vite, SCSS"
+                        link="https://github.com/joeyskuo/drone-vision"
+                    />
+                    <RepoInfo
+                        label="Image Processing API"
+                        details="FastAPI, YOLOv8s, Cloud Run, Docker"
+                        link="https://github.com/joeyskuo/drone-vision-api"
+                    />
+                    <RepoInfo
+                        label="BFF Layer"
+                        details="Node, Express, Railway"
+                        link="https://github.com/joeyskuo/drone-vision-bff"
+                    />
                 </section>
             </section>
         </div>
