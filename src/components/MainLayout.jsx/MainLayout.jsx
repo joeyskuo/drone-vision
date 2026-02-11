@@ -11,7 +11,7 @@ const MainLayout = () => {
             <section className="title-section">
                 <h1>Drone Vision</h1>
                 <h2>Simulation and Image Processing</h2>
-                <div>ROS2 &middot; Gazebo &middot; TensorFlow</div>
+                <div>ROS2 &middot; Gazebo &middot; YOLOv8s</div>
             </section>
             <section className="video-section">
                 <CameraViewPlayer/>
@@ -23,7 +23,7 @@ const MainLayout = () => {
             <section className="about-section">
                 <section className="project-description-section">
                     <h3>Project Description</h3>
-                    <p>A drone is operated in a simulated world, and images from its camera feed are run through a pre-trained object detection model (COCO-SSD)</p>
+                    <p>A drone is operated in a simulated world, and images from its camera feed are run through a custom-trained object detection model (YOLOv8s)</p>
                     <div>
                         <div><strong>Pending</strong></div>
                         <ul>
