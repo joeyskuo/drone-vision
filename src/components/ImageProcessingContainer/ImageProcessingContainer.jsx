@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { warmUp, detectObjects } from '../../ml/objectDetector';
 import { AppContext } from '../../context/AppContext';
 import PredictionContainer from '../PredictionContainer/PredictionContainer';
@@ -6,10 +6,8 @@ import './ImageProcessingContainer.css';
 
 const ImageProcessingContainer = () => {
 
-    const { setAppState } = useContext(AppContext);
+    const { appState, setAppState } = useContext(AppContext);
 
-    const [isLoading, setIsLoading] = useState(false);
-    
     function captureFrame() {
         const CameraViewVideo = document.querySelector('.camera-view-player video');
 
@@ -36,7 +34,7 @@ const ImageProcessingContainer = () => {
     const handleDetect = async () => {
 
         let imgRef = document.querySelector('.captured-frame-root img');
-        setIsLoading(true);
+        setAppState({isLoading: true});
 
         try {
             await detectObjects(imgRef);
@@ -44,7 +42,7 @@ const ImageProcessingContainer = () => {
             console.error('Detection error:', error);
         }
 
-        setIsLoading(false);
+        setAppState({isLoading: false});
     };
 
     useEffect(() => {
