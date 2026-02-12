@@ -57,7 +57,7 @@ const ImageProcessingContainer = () => {
                 <button onClick={captureFrame}>
                     Capture
                 </button>
-                <button onClick={handleDetect}>
+                <button onClick={handleDetect} disabled={isLoading}>
                     Detect
                 </button>
             </div>
