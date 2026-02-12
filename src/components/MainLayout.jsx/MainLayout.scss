@@ -69,9 +69,11 @@
 
             .prediction-container-results {
                 height: 100%;
-                padding: 25px;
-
                 background-color: #2a2a2a;
+
+                img {
+                    width: 100%;
+                }
             }
         }
     }
