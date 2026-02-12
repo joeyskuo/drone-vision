@@ -61,6 +61,10 @@ const MainLayout = () => {
                     />
                 </section>
             </section>
+            <section className="architecture-section">
+                <h3>Architecture</h3>
+                <img src="/architecture.png"/>
+            </section>
         </div>
     )
 };
