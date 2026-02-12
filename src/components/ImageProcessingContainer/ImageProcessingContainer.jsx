@@ -1,5 +1,5 @@
-import { useState, useContext } from 'react';
-import { detectObjects } from '../../ml/objectDetector';
+import { useState, useEffect, useContext } from 'react';
+import { warmUp, detectObjects } from '../../ml/objectDetector';
 import { AppContext } from '../../context/AppContext';
 import PredictionContainer from '../PredictionContainer/PredictionContainer';
 import './ImageProcessingContainer.css';
@@ -42,7 +42,11 @@ const ImageProcessingContainer = () => {
         } catch (error) {
           console.error('Detection error:', error);
         }
-      };
+    };
+
+    useEffect(() => {
+        warmUp();
+    }, []);
 
     return (
         <>

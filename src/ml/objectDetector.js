@@ -18,3 +18,7 @@ export async function detectObjects(imgElement) {
   const div = document.querySelector('.prediction-container-results');
   div.innerHTML = `<img src="${imageUrl}" alt="Result">`;
 }
+
+export function warmUp() {
+  axios.get(BFF_ENDPOINT + '/warmup');
+}
