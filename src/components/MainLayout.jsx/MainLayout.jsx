@@ -41,7 +41,7 @@ const MainLayout = () => {
                     />
                     <RepoInfo
                         label="Image Processing ML Model"
-                        details="YOLOv8, Colab, Kaggle"
+                        details="YOLOv8s, Colab, Kaggle"
                         link="https://github.com/joeyskuo/yolov8s-football-detect"
                     />
                     <RepoInfo
