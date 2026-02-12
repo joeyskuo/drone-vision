@@ -53,10 +53,10 @@ const ImageProcessingContainer = () => {
         <>
             <div className='image-process-buttons'>
                 <button onClick={captureFrame}>
-                    Capture
+                    Capture Frame
                 </button>
-                <button onClick={handleDetect} disabled={isLoading}>
-                    Detect
+                <button onClick={handleDetect} disabled={appState.isLoading}>
+                    {appState.isLoading ? 'Detecting...' : 'Detect Objects'}
                 </button>
             </div>
             <div className="image-process-output">
