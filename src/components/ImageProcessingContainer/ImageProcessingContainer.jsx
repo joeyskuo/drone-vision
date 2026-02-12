@@ -8,7 +8,7 @@ const ImageProcessingContainer = () => {
 
     const { setAppState } = useContext(AppContext);
 
-    const [result, setResult] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
     
     function captureFrame() {
         const CameraViewVideo = document.querySelector('.camera-view-player video');
@@ -36,12 +36,15 @@ const ImageProcessingContainer = () => {
     const handleDetect = async () => {
 
         let imgRef = document.querySelector('.captured-frame-root img');
+        setIsLoading(true);
 
         try {
-          await detectObjects(imgRef);
+            await detectObjects(imgRef);
         } catch (error) {
-          console.error('Detection error:', error);
+            console.error('Detection error:', error);
         }
+
+        setIsLoading(false);
     };
 
     useEffect(() => {
