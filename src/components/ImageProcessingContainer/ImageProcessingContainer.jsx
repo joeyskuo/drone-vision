@@ -39,10 +39,10 @@ const ImageProcessingContainer = () => {
         try {
             await detectObjects(imgRef);
         } catch (error) {
-            console.error('Detection error:', error);
+            throw error;
+        } finally {
+            setAppState({isLoading: false});
         }
-
-        setAppState({isLoading: false});
     };
 
     useEffect(() => {
