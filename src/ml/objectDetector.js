@@ -19,6 +19,11 @@ export async function detectObjects(imgElement) {
   div.innerHTML = `<img src="${imageUrl}" alt="Result">`;
 }
 
-export function warmUp() {
-  axios.get(BFF_ENDPOINT + '/warmup');
+export async function warmUp() {
+  try {
+    await axios.get(BFF_ENDPOINT + '/warmup');
+  } catch(error) {
+    if (axios.isCancel(error)) return;
+    throw(error);
+  }
 }
