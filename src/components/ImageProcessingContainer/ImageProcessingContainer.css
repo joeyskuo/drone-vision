@@ -7,7 +7,18 @@
     height: 50px;
     font-size: 20px;
     padding: 10px 20px;
+
+    color: #000;
     cursor: pointer;
+    background-color: #DDE6ED;
+    border-style: unset;
+    border-radius: 5px;
+    border: 1px solid #000;
+
+    &:hover {
+        color: #526D82;
+        border: 1px solid #526D82;
+    }
 
     &:disabled {
         cursor: default;
