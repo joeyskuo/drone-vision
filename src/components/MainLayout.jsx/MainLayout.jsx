@@ -29,8 +29,7 @@ const MainLayout = () => {
                     <div>
                         <div><strong>Pending</strong></div>
                         <ul>
-                            <li>aerial drone model and movement</li>
-                            <li>backend optimizations (error handling, faster cold start, security)</li>
+                            <li>fine-tune YOLOv8s for accurate player and football detection</li>
                         </ul>
                     </div>
                 </section>
