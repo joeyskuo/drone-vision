@@ -1,8 +1,8 @@
 import CameraViewPlayer from "../CameraViewPlayer/CameraViewPlayer";
 import ImageProcessingContainer from "../ImageProcessingContainer/ImageProcessingContainer";
-import PredictionContainer from "../PredictionContainer/PredictionContainer";
 import WorldViewPlayer from "../WorldViewPlayer/WorldViewPlayer";
 import RepoInfo from "../RepoInfo/RepoInfo";
+import { VideoSyncProvider } from "../../context/VideoSyncContext";
 import './MainLayout.scss';
 
 const MainLayout = () => {
@@ -14,8 +14,10 @@ const MainLayout = () => {
                 <div>ROS2 &middot; Gazebo &middot; YOLOv8s</div>
             </section>
             <section className="video-section">
-                <CameraViewPlayer/>
-                <WorldViewPlayer/>
+                <VideoSyncProvider>
+                    <CameraViewPlayer/>
+                    <WorldViewPlayer/>
+                </VideoSyncProvider>
             </section>
             <section className="image-process-section">
                 <ImageProcessingContainer/>
