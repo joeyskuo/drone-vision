@@ -29,6 +29,7 @@ const MainLayout = () => {
                     <div>
                         <div><strong>Pending</strong></div>
                         <ul>
+                            <li>develop synthetic data pipeline generate paired image and annotation files of a football (Blender, Python)</li>
                             <li>fine-tune YOLOv8s for accurate player and football detection</li>
                         </ul>
                     </div>
