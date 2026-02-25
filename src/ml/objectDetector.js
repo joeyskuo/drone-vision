@@ -21,7 +21,7 @@ export async function detectObjects(imgElement) {
 
 export async function warmUp() {
   try {
-    axios.get(BFF_ENDPOINT + '/warmup');
+    await axios.get(BFF_ENDPOINT + '/warmup');
   } catch(error) {
     if (axios.isCancel(error)) return;
     throw(error);
