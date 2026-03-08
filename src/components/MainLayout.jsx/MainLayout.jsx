@@ -24,8 +24,12 @@ const MainLayout = () => {
             </section>
             <section className="about-section">
                 <section className="project-description-section">
-                    <h3>Project Description</h3>
-                    <p>A drone is operated in a simulated world, and images from its camera feed are run through a custom-trained object detection model (YOLOv8s)</p>
+                    <div class="section-label">About the Project</div>
+                    <p>A ROS 2 drone is simulated in Gazebo, where images from the camera feed topic 
+    have been recorded. Still frames are sent to a YOLOv8s object detection model 
+    trained on a custom football/player image dataset. Model performance is being 
+    actively improved through deep learning workflows, including hyperparameter tuning, 
+    dataset augmentation, and retraining with synthetic data</p>
                     <div>
                         <div><strong>Pending</strong></div>
                         <ul>
