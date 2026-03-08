@@ -7,9 +7,11 @@ const PredictionContainer = () => {
     
     return (
         <div className="prediction-container">
-            <h3>Predictions</h3>
-            <div className="prediction-container-results">
-            </div>
+            <div class="section-label">Predictions</div>
+                <div className="prediction-container-results">
+                    <span className='prediction-placeholder--icon'>⬚</span>
+                    <span className='prediction-placeholder--text'>No predictions yet</span>
+                </div>
         </div>
     )
 }
