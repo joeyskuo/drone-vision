@@ -1,0 +1,61 @@
+.project-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--project-accent);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: 0 2px 12px rgba(39, 88, 122, 0.08);
+    transition: box-shadow 0.15s ease, background-color 0.15s ease;
+    width: fit-content;
+
+    &:hover {
+        background-color: var(--surface-2);
+        box-shadow: 0 4px 18px rgba(39, 88, 122, 0.14);
+    }
+}
+
+.project-link--body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.project-link--name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    font-size: calc(0.95rem + 1px);
+    color: var(--project-accent);
+    letter-spacing: 0.01em;
+}
+
+.project-link--symbol {
+    font-size: calc(1.3rem + 1px);
+    color: var(--project-accent);
+    line-height: 1;
+}
+
+.project-link--meta {
+    font-size: calc(0.8rem + 1px);
+    color: var(--project-accent);
+    opacity: 0.85;
+}
+
+.project-link--description {
+    font-size: calc(0.85rem + 1px);
+    color: var(--text);
+}
+
+.project-link--arrow {
+    font-size: calc(1rem + 1px);
+    color: var(--project-accent);
+    margin-left: 6px;
+    flex-shrink: 0;
+    opacity: 0.7;
+}

@@ -10,7 +10,7 @@ const RepoInfo = ({label, meta, description, link}) => {
                     <div className="repo-summary--label">{label}</div>
                     <div className="repo-summary--meta">{metaString}</div>
                 </div>
-                <a className="repo-link" href={link}>GitHub ↗</a>
+                <a className="repo-link" href={link} target="_blank" rel="noreferrer">GitHub ↗</a>
             </div>
             <p className="repo-description">{description}</p>
         </article>

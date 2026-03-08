@@ -178,6 +178,14 @@
         }
     }
 
+    .related-projects {
+        margin-top: 20px;
+
+        .project-link {
+            margin-left: 20px;
+        }
+    }
+
     .repo-info-list {
         display: flex;
         flex-direction: column;

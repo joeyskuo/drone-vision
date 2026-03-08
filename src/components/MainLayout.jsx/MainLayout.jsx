@@ -2,6 +2,7 @@ import CameraViewPlayer from "../CameraViewPlayer/CameraViewPlayer";
 import ImageProcessingContainer from "../ImageProcessingContainer/ImageProcessingContainer";
 import WorldViewPlayer from "../WorldViewPlayer/WorldViewPlayer";
 import RepoInfo from "../RepoInfo/RepoInfo";
+import ProjectLink from "../ProjectLink/ProjectLink";
 import { VideoSyncProvider } from "../../context/VideoSyncContext";
 import './MainLayout.scss';
 
@@ -36,6 +37,17 @@ const MainLayout = () => {
                             <li>develop synthetic data pipeline to generate paired image and annotation files of a football (Blender, Python)</li>
                             <li>fine-tune YOLOv8s for accurate player and football detection</li>
                         </ul>
+                    </div>
+                    <div className="related-projects">
+                        <div className="sub-label">Related Projects</div>
+                        <ProjectLink
+                            symbol="◈"
+                            name="Code Librarian"
+                            href="https://mycodelibrarian.com"
+                            accent="#4a6878"
+                            meta={["RAG", "Go", "Pinecone"]}
+                            description="Conversational codebase assistant"
+                        />
                     </div>
                 </section>
                 <section className="repo-section">
