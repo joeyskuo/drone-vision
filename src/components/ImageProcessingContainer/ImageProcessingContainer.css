@@ -1,44 +1,55 @@
 .image-process-buttons {
-    display: flex;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
     align-items: center;
-    height: 100px;
+    height: 80px;
+    padding: 0 50px;
+
+    button {
+        justify-self: center;
+    }
 }
 
 .image-process-buttons button {
-    height: 50px;
-    width: 185px;
-    font-size: 20px;
-    padding: 10px 20px;
-
-    color: #000;
+    height: 42px;
+    width: 180px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-radius: 8px;
     cursor: pointer;
-    background-color: #DDE6ED;
-    border-style: unset;
-    border-radius: 5px;
-    border: 1px solid #000;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease;
 
     &.image-process-buttons--capture {
-        background-color: #2d6b90;
-        color: white;
+        background-color: var(--accent);
+        color: #fff;
+        border: none;
 
         &:hover {
-            background-color: #245878;
+            background-color: #1d4a66;
+            box-shadow: 0 2px 8px rgba(39, 88, 122, 0.25);
         }
     }
 
     &.image-process-buttons--detect {
+        background-color: var(--surface-2);
+        color: var(--accent);
+        border: 1.5px solid var(--accent-2);
+
         &:hover {
-            background-color: #c8d8e4;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            background-color: var(--surface);
+            box-shadow: 0 2px 8px rgba(39, 88, 122, 0.15);
         }
 
         &:disabled {
-            background-color: #f0f0f0;
-            color: #aaa;
-            border-color: #ccc;
+            background-color: var(--surface-2);
+            color: var(--text-muted);
+            border-color: var(--border);
             cursor: not-allowed;
             box-shadow: none;
+            opacity: 0.6;
         }
     }
 }
