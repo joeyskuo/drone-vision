@@ -32,19 +32,26 @@
 }
 
 .video-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5%;
     align-items: center;
 
     figure {
-        height: 100%;
-        width: 100%;
+        margin: 0;
+        background: #eaf1f6;
+        border: 1px solid rgba(82, 109, 130, 0.18);
+        border-radius: 16px;
+        padding: 20px;
 
         figcaption {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
         }
 
         video {
