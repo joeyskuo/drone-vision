@@ -1,10 +1,18 @@
-const RepoInfo = ({label, details, link}) => {
+const RepoInfo = ({label, meta, description, link}) => {
+
+
+    const metaString = meta?.join(' · ');
 
     return (
         <article className="repo-info">
-            <span className="repo-label">{label}</span>
-            <span>({details})</span>
-            <a href={link}>Repo</a>
+            <div className="repo-header">
+                <div className="repo-summary">
+                    <div className="repo-summary--label">{label}</div>
+                    <div className="repo-summary--meta">{metaString}</div>
+                </div>
+                <a className="repo-link" href={link}>GitHub ↗</a>
+            </div>
+            <p className="repo-description">{description}</p>
         </article>
     )
 }
