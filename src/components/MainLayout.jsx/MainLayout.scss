@@ -86,7 +86,21 @@
 
             .image-placeholder {
                 height: 100%;
-                background-color: #DDE6ED;
+                background: var(--surface-2);
+                border-radius: 10px;
+                border: 2px dashed var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--text-muted);
+                font-size: 1rem;
+                letter-spacing: 0.05em;
+                flex-direction: column;
+                gap: 8px;
+
+                &--icon {
+                    font-size: 2.5rem;
+                }
             }
         }
 
