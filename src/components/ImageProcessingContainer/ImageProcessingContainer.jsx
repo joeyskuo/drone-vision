@@ -61,9 +61,12 @@ const ImageProcessingContainer = () => {
             </div>
             <div className="image-process-output">
                 <div className='captured-frame-container'>
-                    <h3>Captured Frame</h3>
+                    <div className="section-label">Captured Frame</div>
                     <div className='captured-frame-root'>
-                        <div className='image-placeholder'></div>
+                        <div className='image-placeholder'>
+                            <span className='image-placeholder--icon'>🖼</span>
+                            <span className='image-placeholder--text'>No frame captured yet</span>
+                        </div>
                     </div>
                 </div>
                 <PredictionContainer/>
