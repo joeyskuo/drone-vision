@@ -1,10 +1,13 @@
 .image-process-buttons {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    height: 100px;
 }
 
 .image-process-buttons button {
     height: 50px;
+    width: 185px;
     font-size: 20px;
     padding: 10px 20px;
 
@@ -15,12 +18,27 @@
     border-radius: 5px;
     border: 1px solid #000;
 
-    &:hover {
-        color: #526D82;
-        border: 1px solid #526D82;
+    &.image-process-buttons--capture {
+        background-color: #2d6b90;
+        color: white;
+
+        &:hover {
+            background-color: #245878;
+        }
     }
 
-    &:disabled {
-        cursor: default;
+    &.image-process-buttons--detect {
+        &:hover {
+            background-color: #c8d8e4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        &:disabled {
+            background-color: #f0f0f0;
+            color: #aaa;
+            border-color: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
     }
 }
