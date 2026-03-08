@@ -1,17 +1,26 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  color: black;
-  background-color: #9DB2BF;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  color: var(--text);
+
+  --bg: #dde6ed;
+  --surface: #eaf1f6;
+  --surface-2: #f4f8fb;
+  --border: rgba(82, 109, 130, 0.18);
+  --accent: #27587a;
+  --accent-2: #3a8fa8;
+  --text: #1a2e3b;
+  --text-muted: #526d82;
+  line-height: 1.6;
+
+  background-color: var(--bg);
+  color-scheme: light;
 }
 
 body {
