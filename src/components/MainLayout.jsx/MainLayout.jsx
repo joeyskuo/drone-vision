@@ -39,32 +39,39 @@ const MainLayout = () => {
                     </div>
                 </section>
                 <section className="repo-section">
-                    <h3>Modules</h3>
-                    <RepoInfo
-                        label="ROS2 Drone Workspace"
-                        details="Gazebo, RViz, TF, Xacro"
-                        link="https://github.com/joeyskuo/drone-feed"
-                    />
-                    <RepoInfo
-                        label="Object Detection ML Model"
-                        details="YOLOv8s, Colab, Kaggle"
-                        link="https://github.com/joeyskuo/yolov8s-football-detect"
-                    />
-                    <RepoInfo
-                        label="Web App"
-                        details="React, Vite, SCSS"
-                        link="https://github.com/joeyskuo/drone-vision"
-                    />
-                    <RepoInfo
-                        label="Object Detection API"
-                        details="FastAPI, YOLOv8s, Cloud Run, Docker"
-                        link="https://github.com/joeyskuo/drone-vision-api"
-                    />
-                    <RepoInfo
-                        label="BFF Layer"
-                        details="Node, Express, Railway"
-                        link="https://github.com/joeyskuo/drone-vision-bff"
-                    />
+                    <div class="section-label">Modules</div>
+                    <div className="repo-info-list">
+                        <RepoInfo
+                            label="ROS2 Drone Workspace"
+                            meta={["Gazebo", "RViz", "TF", "Xacro"]}
+                            link="https://github.com/joeyskuo/drone-feed"
+                            description="ROS 2 drone simulation in Gazebo — includes model, world, and bringup"
+                        />
+                        <RepoInfo
+                            label="Object Detection ML Model"
+                            meta={["YOLOv8s", "Colab", "Kaggle"]}
+                            link="https://github.com/joeyskuo/yolov8s-football-detect"
+                            description="YOLOv8s Object Detection Model Training on Google Colab"
+                        />
+                        <RepoInfo
+                            label="Web App"
+                            meta={["React", "Vite", "SCSS"]}
+                            link="https://github.com/joeyskuo/drone-vision"
+                            description="React app demonstrating YOLOv8s object detection via API integration on drone camera feed "
+                        />
+                        <RepoInfo
+                            label="Object Detection API"
+                            meta={["FastAPI", "YOLOv8s", "Cloud Run", "Docker"]}
+                            link="https://github.com/joeyskuo/drone-vision-api"
+                            description="FastAPI Service for Object Detection using trained model"
+                        />
+                        <RepoInfo
+                            label="BFF Layer"
+                            meta={["Node", "Express", "Railway"]}
+                            link="https://github.com/joeyskuo/drone-vision-bff"
+                            description="Centralize API access control, secure credentials, and enable rate limiting"
+                        />
+                    </div>
                 </section>
             </section>
             <section className="architecture-section">
