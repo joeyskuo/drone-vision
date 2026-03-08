@@ -45,8 +45,8 @@ const MainLayout = () => {
                             name="Code Librarian"
                             href="https://mycodelibrarian.com"
                             accent="#4a6878"
-                            meta={["RAG", "Go", "Pinecone"]}
-                            description="Conversational codebase assistant"
+                            meta={["Go", "Claude", "Pinecone", "Redis", "React"]}
+                            description="Codebase browser powered by a RAG pipeline for answering questions about a repo"
                         />
                     </div>
                 </section>
