@@ -1,4 +1,11 @@
+@keyframes shine {
+    0%   { transform: translateX(-100%) skewX(-15deg); }
+    100% { transform: translateX(350%) skewX(-15deg); }
+}
+
 .capture-btn {
+    position: relative;
+    overflow: hidden;
     background: var(--accent);
     border: 1.5px solid rgba(0, 0, 0, 0.25);
     border-radius: 14px;
@@ -8,9 +15,32 @@
     font-weight: 700;
     letter-spacing: 0.06em;
     padding: 14px 36px;
+    min-width: 190px;
     cursor: pointer;
     white-space: nowrap;
     transition: background 0.15s;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40%;
+        height: 100%;
+        background: linear-gradient(
+            105deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.28) 50%,
+            transparent 100%
+        );
+        animation: shine 2s ease-in-out infinite;
+        pointer-events: none;
+    }
+
+    &.activated::after {
+        animation: none;
+        display: none;
+    }
 
     &:hover {
         background: #1d4a66;
@@ -21,7 +51,13 @@
     }
 
     &:disabled {
-        opacity: 0.65;
+        background: #8fafc0;
+        color: rgba(255, 255, 255, 0.75);
+        border-color: transparent;
         cursor: not-allowed;
+
+        &::after {
+            display: none;
+        }
     }
 }

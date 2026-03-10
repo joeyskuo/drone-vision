@@ -16,7 +16,7 @@ const ImageProcessingContainer = () => {
                 <div className='captured-frame-root'>
                     <div className='image-placeholder'>
                         <span className='image-placeholder--icon'>🖼</span>
-                        <span className='image-placeholder--text'>No frame captured yet</span>
+                        <span className='image-placeholder--text'>Press Capture Frame to begin</span>
                     </div>
                 </div>
             </div>
