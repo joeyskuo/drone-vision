@@ -1,5 +1,6 @@
 import DualVideoPlayer from "../DualVideoPlayer/DualVideoPlayer";
 import ImageProcessingContainer from "../ImageProcessingContainer/ImageProcessingContainer";
+import CaptureButton from "../CaptureButton/CaptureButton";
 import RepoInfo from "../RepoInfo/RepoInfo";
 import ProjectLink from "../ProjectLink/ProjectLink";
 import { VideoSyncProvider } from "../../context/VideoSyncContext";
@@ -17,7 +18,9 @@ const MainLayout = () => {
             <section className="video-section">
                     <DualVideoPlayer/>
             </section>
-            <div className="video-capture-connector" aria-hidden="true" />
+            <div className="video-capture-connector">
+                <CaptureButton />
+            </div>
             <section className="image-process-section">
                 <ImageProcessingContainer/>
             </section>
