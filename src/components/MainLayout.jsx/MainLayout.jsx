@@ -1,12 +1,53 @@
+import { useContext, useState } from 'react';
+import { AppContext } from '../../context/AppContext';
+import { useVideoSync } from '../../context/VideoSyncContext';
+import { detectObjects } from '../../ml/objectDetector';
 import DualVideoPlayer from "../DualVideoPlayer/DualVideoPlayer";
 import ImageProcessingContainer from "../ImageProcessingContainer/ImageProcessingContainer";
-import CaptureButton from "../CaptureButton/CaptureButton";
 import RepoInfo from "../RepoInfo/RepoInfo";
 import ProjectLink from "../ProjectLink/ProjectLink";
-import { VideoSyncProvider } from "../../context/VideoSyncContext";
 import './MainLayout.scss';
 
 const MainLayout = () => {
+    const { appState, setAppState } = useContext(AppContext);
+    const { sourceRef } = useVideoSync();
+    const [captureActivated, setCaptureActivated] = useState(false);
+
+    const handleCapture = async () => {
+        setCaptureActivated(true);
+        const video = sourceRef.current;
+
+        const frameCanvas = document.createElement('canvas');
+        frameCanvas.width = video.videoWidth;
+        frameCanvas.height = video.videoHeight;
+        const ctx = frameCanvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, frameCanvas.width, frameCanvas.height);
+
+        const container = document.querySelector('.captured-frame-root');
+        const rawImg = document.createElement('img');
+        rawImg.src = frameCanvas.toDataURL('image/jpeg', 0.95);
+        rawImg.style.width = '100%';
+        container.innerHTML = '';
+        container.appendChild(rawImg);
+
+        setAppState({ isLoading: true });
+
+        frameCanvas.toBlob(async (blob) => {
+            try {
+                const resultUrl = await detectObjects(blob);
+                const resultImg = document.createElement('img');
+                resultImg.src = resultUrl;
+                resultImg.style.width = '100%';
+                container.innerHTML = '';
+                container.appendChild(resultImg);
+            } catch (error) {
+                throw error;
+            } finally {
+                setAppState({ isLoading: false });
+            }
+        }, 'image/jpeg', 0.95);
+    };
+
     return (
         <div id="main-layout">
             <section className="title-section">
@@ -14,17 +55,17 @@ const MainLayout = () => {
                 <h2>Simulation and Object Detection</h2>
                 <div>ROS2 &middot; Gazebo &middot; YOLOv8s</div>
             </section>
-            <VideoSyncProvider>
             <section className="video-section">
                     <DualVideoPlayer/>
             </section>
             <div className="video-capture-connector">
-                <CaptureButton />
+                <button className={`capture-btn${captureActivated ? ' activated' : ''}`} onClick={handleCapture} disabled={appState.isLoading}>
+                    {appState.isLoading ? 'Detecting...' : 'Capture Frame'}
+                </button>
             </div>
             <section className="image-process-section">
                 <ImageProcessingContainer/>
             </section>
-            </VideoSyncProvider>
             <section className="about-section">
                 <section className="project-description-section">
                     <div class="section-label">About the Project</div>
