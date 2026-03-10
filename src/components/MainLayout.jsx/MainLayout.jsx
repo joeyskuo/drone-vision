@@ -13,14 +13,14 @@ const MainLayout = () => {
                 <h2>Simulation and Object Detection</h2>
                 <div>ROS2 &middot; Gazebo &middot; YOLOv8s</div>
             </section>
+            <VideoSyncProvider>
             <section className="video-section">
-                <VideoSyncProvider>
                     <DualVideoPlayer/>
-                </VideoSyncProvider>
             </section>
             <section className="image-process-section">
                 <ImageProcessingContainer/>
             </section>
+            </VideoSyncProvider>
             <section className="about-section">
                 <section className="project-description-section">
                     <div class="section-label">About the Project</div>

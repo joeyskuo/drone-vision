@@ -1,15 +1,17 @@
 import { useEffect, useContext } from 'react';
 import { warmUp, detectObjects } from '../../ml/objectDetector';
 import { AppContext } from '../../context/AppContext';
+import { useVideoSync } from '../../context/VideoSyncContext';
 import PredictionContainer from '../PredictionContainer/PredictionContainer';
 import './ImageProcessingContainer.css';
 
 const ImageProcessingContainer = () => {
 
     const { appState, setAppState } = useContext(AppContext);
+    const { sourceRef } = useVideoSync();
 
     function captureFrame() {
-        const CameraViewVideo = document.querySelector('.camera-view-player video');
+        const CameraViewVideo = sourceRef.current;
 
         // create canvas matching video size
         const frameCanvas = document.createElement('canvas');
