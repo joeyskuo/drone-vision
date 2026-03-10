@@ -1,6 +1,6 @@
 @keyframes shine {
-    0%   { transform: translateX(-100%) skewX(-15deg); }
-    100% { transform: translateX(350%) skewX(-15deg); }
+    0%        { transform: translateX(-100%) skewX(-15deg); }
+    15%, 100% { transform: translateX(650%) skewX(-15deg); }
 }
 
 .capture-btn {
@@ -25,15 +25,17 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 40%;
+        width: 20%;
         height: 100%;
         background: linear-gradient(
             105deg,
             transparent 0%,
-            rgba(255, 255, 255, 0.28) 50%,
+            rgba(255, 255, 255, 0.2) 35%,
+            rgba(255, 255, 255, 0) 45%,
+            rgba(255, 255, 255, 0.2) 55%,
             transparent 100%
         );
-        animation: shine 2s ease-in-out infinite;
+        animation: shine 10s ease-in-out infinite;
         pointer-events: none;
     }
 
