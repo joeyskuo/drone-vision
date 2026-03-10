@@ -1,6 +1,5 @@
-import CameraViewPlayer from "../CameraViewPlayer/CameraViewPlayer";
+import DualVideoPlayer from "../DualVideoPlayer/DualVideoPlayer";
 import ImageProcessingContainer from "../ImageProcessingContainer/ImageProcessingContainer";
-import WorldViewPlayer from "../WorldViewPlayer/WorldViewPlayer";
 import RepoInfo from "../RepoInfo/RepoInfo";
 import ProjectLink from "../ProjectLink/ProjectLink";
 import { VideoSyncProvider } from "../../context/VideoSyncContext";
@@ -16,8 +15,7 @@ const MainLayout = () => {
             </section>
             <section className="video-section">
                 <VideoSyncProvider>
-                    <CameraViewPlayer/>
-                    <WorldViewPlayer/>
+                    <DualVideoPlayer/>
                 </VideoSyncProvider>
             </section>
             <section className="image-process-section">

@@ -33,36 +33,7 @@
 }
 
 .video-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5%;
-    align-items: center;
-
-    figure {
-        margin: 0;
-        background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
-        border: 1px solid var(--border);
-        border-top: 2px solid var(--accent-2);
-        border-radius: 16px;
-        padding: 20px;
-        box-shadow: 0 4px 24px rgba(39, 88, 122, 0.10);
-
-        figcaption {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
-
-        video {
-            aspect-ratio: 350 / 260;
-            border-radius: 8px;
-            display: block;
-        }
-    }
+    display: block;
 }
 
 .image-process-section {
