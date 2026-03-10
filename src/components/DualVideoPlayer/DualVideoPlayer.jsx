@@ -81,15 +81,17 @@ const DualVideoPlayer = () => {
 
     return (
         <figure className="dual-video-player">
+            <div className="video-headers">
+                <div className="video-label">Drone Camera</div>
+                <div className="video-label">World View</div>
+            </div>
             <div className="video-pair">
                 <div className="video-slot">
-                    <div className="video-label">Drone Camera</div>
                     <video ref={sourceRef} width="100%">
                         <source src="/videos/cam_soccer.mp4" type="video/mp4" />
                     </video>
                 </div>
                 <div className="video-slot">
-                    <div className="video-label">World View</div>
                     <video ref={worldRef} width="100%">
                         <source src="/videos/world_soccer.mp4" type="video/mp4" />
                     </video>
