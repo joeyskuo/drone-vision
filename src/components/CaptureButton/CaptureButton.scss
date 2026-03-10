@@ -1,24 +1,27 @@
 .capture-btn {
-    background: var(--bg);
-    border: 2px solid var(--accent);
-    border-radius: 20px;
-    color: var(--accent);
+    background: var(--accent);
+    border: 1.5px solid rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    color: #fff;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 700;
-    letter-spacing: 0.05em;
-    padding: 6px 18px;
+    letter-spacing: 0.06em;
+    padding: 14px 36px;
     cursor: pointer;
     white-space: nowrap;
-    transition: background 0.15s, color 0.15s;
+    transition: background 0.15s;
 
     &:hover {
-        background: var(--accent);
-        color: #fff;
+        background: #1d4a66;
+    }
+
+    &:active {
+        background: #163a52;
     }
 
     &:disabled {
+        opacity: 0.65;
         cursor: not-allowed;
-        opacity: 0.6;
     }
 }
