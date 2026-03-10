@@ -17,6 +17,7 @@ const MainLayout = () => {
             <section className="video-section">
                     <DualVideoPlayer/>
             </section>
+            <div className="video-capture-connector" aria-hidden="true" />
             <section className="image-process-section">
                 <ImageProcessingContainer/>
             </section>
