@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { useVideoSync } from '../../context/VideoSyncContext';
 import { detectObjects } from '../../ml/objectDetector';
@@ -7,8 +7,10 @@ import './CaptureButton.scss';
 const CaptureButton = () => {
     const { appState, setAppState } = useContext(AppContext);
     const { sourceRef } = useVideoSync();
+    const [activated, setActivated] = useState(false);
 
     const handleCapture = async () => {
+        setActivated(true);
         const video = sourceRef.current;
 
         const frameCanvas = document.createElement('canvas');
@@ -43,7 +45,7 @@ const CaptureButton = () => {
     };
 
     return (
-        <button className="capture-btn" onClick={handleCapture} disabled={appState.isLoading}>
+        <button className={`capture-btn${activated ? ' activated' : ''}`} onClick={handleCapture} disabled={appState.isLoading}>
             {appState.isLoading ? 'Detecting...' : 'Capture Frame'}
         </button>
     );
