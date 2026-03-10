@@ -72,9 +72,42 @@
 
     .seek-bar {
         flex: 1;
-        accent-color: var(--accent-2);
-        height: 4px;
         cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        height: 30px;
+        background: transparent;
+
+        &::-webkit-slider-runnable-track {
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+        }
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-2);
+            margin-top: -5px;
+            cursor: pointer;
+        }
+
+        &::-moz-range-track {
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+        }
+
+        &::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-2);
+            border: none;
+            cursor: pointer;
+        }
     }
 
     .time-display {
