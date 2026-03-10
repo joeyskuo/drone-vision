@@ -10,41 +10,38 @@ const ImageProcessingContainer = () => {
     const { appState, setAppState } = useContext(AppContext);
     const { sourceRef } = useVideoSync();
 
-    function captureFrame() {
-        const CameraViewVideo = sourceRef.current;
+    const handleCapture = async () => {
+        const video = sourceRef.current;
 
-        // create canvas matching video size
         const frameCanvas = document.createElement('canvas');
-        frameCanvas.width = CameraViewVideo.videoWidth;
-        frameCanvas.height = CameraViewVideo.videoHeight;
-        
-        // capture frame
+        frameCanvas.width = video.videoWidth;
+        frameCanvas.height = video.videoHeight;
         const ctx = frameCanvas.getContext('2d');
-        ctx.drawImage(CameraViewVideo, 0, 0, frameCanvas.width, frameCanvas.height);
-        
-        // Convert to image and display
-        const frameImage = document.createElement('img');
-        frameImage.src = frameCanvas.toDataURL('image/jpeg', 0.95);
-        frameImage.style.width = '100%';
-        
-        // Clear container and add image
+        ctx.drawImage(video, 0, 0, frameCanvas.width, frameCanvas.height);
+
         const container = document.querySelector('.captured-frame-root');
+        const rawImg = document.createElement('img');
+        rawImg.src = frameCanvas.toDataURL('image/jpeg', 0.95);
+        rawImg.style.width = '100%';
         container.innerHTML = '';
-        container.appendChild(frameImage);
-    }
+        container.appendChild(rawImg);
 
-    const handleDetect = async () => {
+        setAppState({ isLoading: true });
 
-        let imgRef = document.querySelector('.captured-frame-root img');
-        setAppState({isLoading: true});
-
-        try {
-            await detectObjects(imgRef);
-        } catch (error) {
-            throw error;
-        } finally {
-            setAppState({isLoading: false});
-        }
+        frameCanvas.toBlob(async (blob) => {
+            try {
+                const resultUrl = await detectObjects(blob);
+                const resultImg = document.createElement('img');
+                resultImg.src = resultUrl;
+                resultImg.style.width = '100%';
+                container.innerHTML = '';
+                container.appendChild(resultImg);
+            } catch (error) {
+                throw error;
+            } finally {
+                setAppState({ isLoading: false });
+            }
+        }, 'image/jpeg', 0.95);
     };
 
     useEffect(() => {
@@ -54,11 +51,8 @@ const ImageProcessingContainer = () => {
     return (
         <>
             <div className='image-process-buttons'>
-                <button className="image-process-buttons--capture" onClick={captureFrame}>
-                    Capture Frame
-                </button>
-                <button className="image-process-buttons--detect" onClick={handleDetect} disabled={appState.isLoading}>
-                    {appState.isLoading ? 'Detecting...' : 'Detect Objects'}
+                <button className="image-process-buttons--capture" onClick={handleCapture} disabled={appState.isLoading}>
+                    {appState.isLoading ? 'Detecting...' : 'Capture Frame'}
                 </button>
             </div>
             <div className="image-process-output">

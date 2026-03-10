@@ -1,9 +1,7 @@
 import axios from 'axios';
 const BFF_ENDPOINT = import.meta.env.VITE_BFF_ENDPOINT;
 
-export async function detectObjects(imgElement) {
-  const response = await fetch(imgElement.src);
-  const blob = await response.blob();
+export async function detectObjects(blob) {
   const formData = new FormData();
   formData.append('file', blob, 'image.jpg');
 
@@ -14,9 +12,7 @@ export async function detectObjects(imgElement) {
     responseType: 'blob'
   });
 
-  const imageUrl = URL.createObjectURL(detections.data);
-  const div = document.querySelector('.prediction-container-results');
-  div.innerHTML = `<img src="${imageUrl}" alt="Result">`;
+  return URL.createObjectURL(detections.data);
 }
 
 export async function warmUp() {
