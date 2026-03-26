@@ -1,8 +1,17 @@
 import './ProjectLink.css';
 
-const ProjectLink = ({ symbol, name, href, accent, description, meta }) => {
+interface ProjectLinkProps {
+  symbol: string;
+  name: string;
+  href: string;
+  accent: string;
+  description: string;
+  meta?: string[];
+}
+
+const ProjectLink = ({ symbol, name, href, accent, description, meta }: ProjectLinkProps) => {
     return (
-        <a className="project-link" href={href} target="_blank" rel="noreferrer" style={{ '--project-accent': accent }}>
+        <a className="project-link" href={href} target="_blank" rel="noreferrer" style={{ '--project-accent': accent } as React.CSSProperties}>
             <div className="project-link--body">
                 <div className="project-link--name">
                     <span className="project-link--symbol">{symbol}</span>

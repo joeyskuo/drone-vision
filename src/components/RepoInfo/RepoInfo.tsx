@@ -1,6 +1,11 @@
-const RepoInfo = ({label, meta, description, link}) => {
+interface RepoInfoProps {
+  label: string;
+  meta?: string[];
+  description: string;
+  link: string;
+}
 
-
+const RepoInfo = ({ label, meta, description, link }: RepoInfoProps) => {
     const metaString = meta?.join(' · ');
 
     return (

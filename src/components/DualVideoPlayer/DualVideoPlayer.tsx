@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useVideoSync } from "../../context/VideoSyncContext";
 import './DualVideoPlayer.scss';
 
-const formatTime = (t) => {
+const formatTime = (t: number) => {
     if (!isFinite(t) || isNaN(t)) return '0:00';
     const m = Math.floor(t / 60);
     const s = Math.floor(t % 60).toString().padStart(2, '0');
@@ -11,7 +11,7 @@ const formatTime = (t) => {
 
 const DualVideoPlayer = () => {
     const { sourceRef } = useVideoSync();
-    const worldRef = useRef(null);
+    const worldRef = useRef<HTMLVideoElement>(null);
 
     const [playing, setPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
@@ -73,7 +73,7 @@ const DualVideoPlayer = () => {
         video.paused ? video.play() : video.pause();
     };
 
-    const onSeek = (e) => {
+    const onSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
         const video = sourceRef.current;
         if (!video) return;
         video.currentTime = Number(e.target.value);

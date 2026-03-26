@@ -18,28 +18,29 @@ const MainLayout = () => {
         const video = sourceRef.current;
 
         const frameCanvas = document.createElement('canvas');
-        frameCanvas.width = video.videoWidth;
-        frameCanvas.height = video.videoHeight;
+        frameCanvas.width = video!.videoWidth;
+        frameCanvas.height = video!.videoHeight;
         const ctx = frameCanvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, frameCanvas.width, frameCanvas.height);
+        ctx!.drawImage(video!, 0, 0, frameCanvas.width, frameCanvas.height);
 
         const container = document.querySelector('.captured-frame-root');
         const rawImg = document.createElement('img');
         rawImg.src = frameCanvas.toDataURL('image/jpeg', 0.95);
         rawImg.style.width = '100%';
-        container.innerHTML = '';
-        container.appendChild(rawImg);
+        container!.innerHTML = '';
+        container!.appendChild(rawImg);
 
         setAppState({ isLoading: true });
 
         frameCanvas.toBlob(async (blob) => {
+            if (!blob) return;
             try {
                 const resultUrl = await detectObjects(blob);
                 const resultImg = document.createElement('img');
                 resultImg.src = resultUrl;
                 resultImg.style.width = '100%';
-                container.innerHTML = '';
-                container.appendChild(resultImg);
+                container!.innerHTML = '';
+                container!.appendChild(resultImg);
             } catch (error) {
                 throw error;
             } finally {
@@ -68,7 +69,7 @@ const MainLayout = () => {
             </section>
             <section className="about-section">
                 <section className="project-description-section">
-                    <div class="section-label">About the Project</div>
+                    <div className="section-label">About the Project</div>
                     <p>A ROS 2-based drone is simulated in the Gazebo environment, where the onboard camera feed is captured via ROS topics and sampled into still frames. These frames are passed to a YOLOv8s object detection model, initially trained on a real-world dataset of aerial football match imagery. Model performance is being improved through retraining using synthetically generated data</p>
                     <div>
                         <div className="sub-label">Pending Improvements</div>
@@ -91,7 +92,7 @@ const MainLayout = () => {
                     </div>
                 </section>
                 <section className="repo-section">
-                    <div class="section-label">Modules</div>
+                    <div className="section-label">Modules</div>
                     <div className="repo-info-list">
                         <RepoInfo
                             label="ROS2 Drone Workspace"
@@ -127,7 +128,7 @@ const MainLayout = () => {
                 </section>
             </section>
             <section className="architecture-section">
-                <div class="section-label">Architecture</div>
+                <div className="section-label">Architecture</div>
                 <img src="/architecture.png"/>
             </section>
         </div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 const BFF_ENDPOINT = import.meta.env.VITE_BFF_ENDPOINT;
 
-export async function detectObjects(blob) {
+export async function detectObjects(blob: Blob): Promise<string> {
   const formData = new FormData();
   formData.append('file', blob, 'image.jpg');
 
@@ -15,7 +15,7 @@ export async function detectObjects(blob) {
   return URL.createObjectURL(detections.data);
 }
 
-export async function warmUp() {
+export async function warmUp(): Promise<void> {
   try {
     await axios.get(BFF_ENDPOINT + '/warmup');
   } catch(error) {
