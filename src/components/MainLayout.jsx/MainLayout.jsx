@@ -69,16 +69,13 @@ const MainLayout = () => {
             <section className="about-section">
                 <section className="project-description-section">
                     <div class="section-label">About the Project</div>
-                    <p>A ROS 2 drone is simulated in Gazebo, where images from the camera feed topic 
-    have been recorded. Still frames are sent to a YOLOv8s object detection model 
-    trained on a custom football/player image dataset. Model performance is being 
-    actively improved through deep learning workflows, including hyperparameter tuning, 
-    dataset augmentation, and retraining with synthetic data</p>
+                    <p>A ROS 2-based drone is simulated in the Gazebo environment, where the onboard camera feed is captured via ROS topics and sampled into still frames. These frames are passed to a YOLOv8s object detection model, initially trained on a real-world dataset of aerial football match imagery. Model performance is being improved through retraining using synthetically generated data</p>
                     <div>
                         <div className="sub-label">Pending Improvements</div>
                         <ul className="pending-list">
-                            <li>develop synthetic data pipeline to generate paired image and annotation files of a football (Blender, Python)</li>
-                            <li>fine-tune YOLOv8s for accurate player and football detection</li>
+                            <li>Implement Faster R-CNN (ResNet-50) training loop on synthetic data</li>
+                            <li>Replace object detection model and implement PyTorch checkpoint support</li>
+                            <li>Return prediction scores alongside bounding boxes</li>
                         </ul>
                     </div>
                     <div className="related-projects">
