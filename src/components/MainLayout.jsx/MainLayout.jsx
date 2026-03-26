@@ -86,10 +86,10 @@ const MainLayout = () => {
                         <ProjectLink
                             symbol="◈"
                             name="Code Librarian"
-                            href="https://mycodelibrarian.com"
+                            href="https://www.mycodelibrarian.com"
                             accent="#4a6878"
-                            meta={["Go", "Claude", "Pinecone", "Redis", "React"]}
-                            description="Codebase browser powered by a RAG pipeline for answering questions about a repo"
+                            meta={["RAG", "pgvector", "Claude Sonnet", "BFF", "Redis"]}
+                            description="An interactive codebase browser that lets developers query any repository in natural language. Powered by a RAG pipeline with semantic code search and Claude Sonnet"
                         />
                     </div>
                 </section>
