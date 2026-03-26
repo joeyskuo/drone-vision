@@ -1,5 +1,5 @@
 import './App.css'
-import MainLayout from './components/MainLayout.jsx/MainLayout'
+import MainLayout from './components/MainLayout/MainLayout'
 import { AppProvider } from './context/AppContext'
 import { VideoSyncProvider } from './context/VideoSyncContext'
 
