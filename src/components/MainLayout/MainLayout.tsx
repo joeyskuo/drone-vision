@@ -54,7 +54,7 @@ const MainLayout = () => {
             <section className="title-section">
                 <h1>Drone Vision</h1>
                 <h2>Simulation and Object Detection</h2>
-                <div>ROS2 &middot; Gazebo &middot; YOLOv8s</div>
+                <div>PyTorch &middot; ROS2 &middot; Gazebo</div>
             </section>
             <section className="video-section">
                     <DualVideoPlayer/>
@@ -70,12 +70,11 @@ const MainLayout = () => {
             <section className="about-section">
                 <section className="project-description-section">
                     <div className="section-label">About the Project</div>
-                    <p>A ROS 2-based drone is simulated in the Gazebo environment, where the onboard camera feed is captured via ROS topics and sampled into still frames. These frames are passed to a YOLOv8s object detection model, initially trained on a real-world dataset of aerial football match imagery. Model performance is being improved through retraining using synthetically generated data</p>
+                    <p>A ROS 2-based drone is simulated in the Gazebo environment, where the onboard camera feed is captured via ROS topics and sampled into still frames. These frames are passed to a Faster R-CNN object detection model trained on synthetically generated data</p>
                     <div>
                         <div className="sub-label">Pending Improvements</div>
                         <ul className="pending-list">
-                            <li>Implement Faster R-CNN (ResNet-50) training loop on synthetic data</li>
-                            <li>Replace object detection model and implement PyTorch checkpoint support</li>
+                            <li>[Completed] Train Faster R-CNN model to replace YOLOv8s model</li>
                             <li>Return prediction scores alongside bounding boxes</li>
                         </ul>
                     </div>
@@ -86,8 +85,8 @@ const MainLayout = () => {
                             name="Code Librarian"
                             href="https://www.mycodelibrarian.com"
                             accent="#4a6878"
-                            meta={["RAG", "pgvector", "Claude Sonnet", "BFF", "Redis"]}
-                            description="An interactive codebase browser that lets developers query any repository in natural language. Powered by a RAG pipeline with semantic code search and Claude Sonnet"
+                            meta={["RAG", "Postgres", "LLM", "BFF", "Redis"]}
+                            description="An interactive codebase browser that lets developers query any repository in natural language. Agentic loop, embeddings, and reranking logic implemented across BFF and tool server"
                         />
                     </div>
                 </section>
@@ -102,19 +101,19 @@ const MainLayout = () => {
                         />
                         <RepoInfo
                             label="Object Detection ML Model"
-                            meta={["YOLOv8s", "Colab", "Kaggle"]}
-                            link="https://github.com/joeyskuo/yolov8s-football-detect"
-                            description="YOLOv8s Object Detection Model Training on Google Colab"
+                            meta={["Faster R-CNN", "PyTorch", "Colab"]}
+                            link="https://github.com/joeyskuo/fasterrcnn-football-detect"
+                            description="Faster R-CNN object detection model training on Google Colab (to be updated)"
                         />
                         <RepoInfo
                             label="Web App"
                             meta={["React", "Vite", "SCSS"]}
                             link="https://github.com/joeyskuo/drone-vision"
-                            description="React app demonstrating YOLOv8s object detection via API integration on drone camera feed "
+                            description="React app demonstrating Faster R-CNN object detection via API integration on drone camera feed"
                         />
                         <RepoInfo
                             label="Object Detection API"
-                            meta={["FastAPI", "YOLOv8s", "Cloud Run", "Docker"]}
+                            meta={["FastAPI", "Faster R-CNN", "Cloud Run", "Docker"]}
                             link="https://github.com/joeyskuo/drone-vision-api"
                             description="FastAPI Service for Object Detection using trained model"
                         />
