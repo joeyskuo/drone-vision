@@ -11,7 +11,7 @@ A React web app showcasing a custom-trained object detection model, applied to R
 1. Plays two synchronized drone camera feeds (camera view + world view) from a Gazebo simulation
 2. User captures a frame — drawn to canvas and converted to JPEG
 3. Frame is POSTed to a BFF (Node/Express on Railway) which forwards to a FastAPI inference service (Cloud Run)
-4. YOLOv8s runs inference and returns an annotated image
+4. Faster R-CNN runs inference and returns an annotated image
 5. Result is displayed replacing the original captured frame
 
 ---
@@ -21,7 +21,7 @@ A React web app showcasing a custom-trained object detection model, applied to R
 | Layer | Tech |
 |---|---|
 | Frontend | React 19, Vite, SCSS, Axios |
-| Inference API | FastAPI, YOLOv8s, Docker, Cloud Run |
+| Inference API | FastAPI, Faster R-CNN, Docker, Cloud Run |
 | BFF | Node.js, Express, Railway |
 | Simulation | ROS 2, Gazebo |
 | Monitoring | Sentry |
@@ -34,7 +34,7 @@ A React web app showcasing a custom-trained object detection model, applied to R
 Browser (React)
   └─► BFF (Node/Express – Railway)
         └─► Inference API (FastAPI – Cloud Run)
-              └─► YOLOv8s model
+              └─► Faster R-CNN model
 ```
 
 - BFF centralizes auth, rate limiting, and credential management
@@ -48,7 +48,7 @@ Browser (React)
 | Repo | Description |
 |---|---|
 | [drone-feed](https://github.com/joeyskuo/drone-feed) | ROS 2 drone simulation in Gazebo — model, world, and bringup |
-| [yolov8s-football-detect](https://github.com/joeyskuo/yolov8s-football-detect) | YOLOv8s training on aerial football imagery (Google Colab) |
+| [fasterrcnn-football-detect](https://github.com/joeyskuo/fasterrcnn-football-detect) | Faster R-CNN training on aerial football imagery |
 | [drone-vision-api](https://github.com/joeyskuo/drone-vision-api) | FastAPI inference service, Dockerized for Cloud Run |
 | [drone-vision-bff](https://github.com/joeyskuo/drone-vision-bff) | BFF layer — API gateway with rate limiting |
 
@@ -72,6 +72,4 @@ VITE_SENTRY_DSN=<sentry-dsn>
 
 ## Pending Improvements
 
-- Implement Faster R-CNN (ResNet-50) training loop on synthetic data
-- Replace object detection model and implement PyTorch checkpoint support
 - Return prediction scores alongside bounding boxes
