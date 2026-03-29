@@ -97,7 +97,7 @@ const MainLayout = () => {
                             label="ROS2 Drone Workspace"
                             meta={["Gazebo", "RViz", "TF", "Xacro"]}
                             link="https://github.com/joeyskuo/drone-feed"
-                            description="ROS 2 drone simulation in Gazebo — includes model, world, and bringup"
+                            description="ROS 2 drone simulation in Gazebo, including model, world, and bringup"
                         />
                         <RepoInfo
                             label="Object Detection ML Model"

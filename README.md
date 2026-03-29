@@ -9,7 +9,7 @@ A React web app showcasing a custom-trained object detection model, applied to R
 ## What It Does
 
 1. Plays two synchronized drone camera feeds (camera view + world view) from a Gazebo simulation
-2. User captures a frame — drawn to canvas and converted to JPEG
+2. User captures a frame, drawn to canvas and converted to JPEG
 3. Frame is POSTed to a BFF (Node/Express on Railway) which forwards to a FastAPI inference service (Cloud Run)
 4. Faster R-CNN runs inference and returns an annotated image
 5. Result is displayed replacing the original captured frame
@@ -47,10 +47,10 @@ Browser (React)
 
 | Repo | Description |
 |---|---|
-| [drone-feed](https://github.com/joeyskuo/drone-feed) | ROS 2 drone simulation in Gazebo — model, world, and bringup |
+| [drone-feed](https://github.com/joeyskuo/drone-feed) | ROS 2 drone simulation in Gazebo: model, world, and bringup |
 | [fasterrcnn-football-detect](https://github.com/joeyskuo/fasterrcnn-football-detect) | Faster R-CNN training on aerial football imagery |
 | [drone-vision-api](https://github.com/joeyskuo/drone-vision-api) | FastAPI inference service, Dockerized for Cloud Run |
-| [drone-vision-bff](https://github.com/joeyskuo/drone-vision-bff) | BFF layer — API gateway with rate limiting |
+| [drone-vision-bff](https://github.com/joeyskuo/drone-vision-bff) | BFF layer: API gateway with rate limiting |
 
 ---
 
