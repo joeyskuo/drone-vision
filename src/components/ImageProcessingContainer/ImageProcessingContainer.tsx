@@ -1,13 +1,7 @@
-import { useEffect } from 'react';
-import { warmUp } from '../../ml/objectDetector';
 import PredictionContainer from '../PredictionContainer/PredictionContainer';
 import './ImageProcessingContainer.css';
 
 const ImageProcessingContainer = () => {
-
-    useEffect(() => {
-        warmUp();
-    }, []);
 
     return (
         <div className="image-process-output">
