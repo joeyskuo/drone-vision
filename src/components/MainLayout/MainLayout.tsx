@@ -6,6 +6,7 @@ import DualVideoPlayer from "../DualVideoPlayer/DualVideoPlayer";
 import ImageProcessingContainer from "../ImageProcessingContainer/ImageProcessingContainer";
 import RepoInfo from "../RepoInfo/RepoInfo";
 import ProjectLink from "../ProjectLink/ProjectLink";
+import repos from '../../data/repos.json';
 import './MainLayout.scss';
 
 const MainLayout = () => {
@@ -93,36 +94,15 @@ const MainLayout = () => {
                 <section className="repo-section">
                     <div className="section-label">Modules</div>
                     <div className="repo-info-list">
-                        <RepoInfo
-                            label="ROS2 Drone Workspace"
-                            meta={["Gazebo", "RViz", "TF", "Xacro"]}
-                            link="https://github.com/joeyskuo/drone-feed"
-                            description="ROS 2 drone simulation in Gazebo, including model, world, and bringup"
-                        />
-                        <RepoInfo
-                            label="Object Detection ML Model"
-                            meta={["Faster R-CNN", "PyTorch", "Colab"]}
-                            link="https://github.com/joeyskuo/fasterrcnn-football-detect"
-                            description="Faster R-CNN object detection model training on Google Colab (to be updated)"
-                        />
-                        <RepoInfo
-                            label="Web App"
-                            meta={["React", "Vite", "SCSS"]}
-                            link="https://github.com/joeyskuo/drone-vision"
-                            description="React app demonstrating Faster R-CNN object detection via API integration on drone camera feed"
-                        />
-                        <RepoInfo
-                            label="Object Detection API"
-                            meta={["FastAPI", "Faster R-CNN", "Cloud Run", "Docker"]}
-                            link="https://github.com/joeyskuo/drone-vision-api"
-                            description="FastAPI Service for Object Detection using trained model"
-                        />
-                        <RepoInfo
-                            label="BFF Layer"
-                            meta={["Node", "Express", "Railway"]}
-                            link="https://github.com/joeyskuo/drone-vision-bff"
-                            description="Centralize API access control, secure credentials, and enable rate limiting"
-                        />
+                        {repos.map((repo) => (
+                            <RepoInfo
+                                key={repo.link}
+                                label={repo.label}
+                                meta={repo.meta}
+                                link={repo.link}
+                                description={repo.description}
+                            />
+                        ))}
                     </div>
                 </section>
             </section>
