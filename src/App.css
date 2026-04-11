@@ -52,6 +52,59 @@ body {
   max-width: 1280px;
 }
 
+.surface-card {
+  background: linear-gradient(160deg, var(--color-surface) 0%, var(--color-surface-alt) 100%);
+}
+
+.capture-connector::before {
+  content: '';
+  position: absolute;
+  left: 25%;
+  transform: translateX(-50%);
+  top: -35px;
+  bottom: -35px;
+  border-left: 5px dashed var(--color-accent);
+  opacity: 0.6;
+}
+
+.capture-btn {
+  position: absolute;
+  left: 25%;
+  transform: translateX(-50%);
+  z-index: 2;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: 0;
+    width: 20%;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 35%,
+      rgba(255, 255, 255, 0) 45%,
+      rgba(255, 255, 255, 0.2) 55%,
+      transparent 100%
+    );
+    animation: var(--animate-shine);
+    pointer-events: none;
+  }
+
+  &[data-state="activated"]::after,
+  &[data-state="detecting"]::after {
+    display: none;
+  }
+
+  &[data-state="detecting"] {
+    background-color: var(--color-accent-muted);
+    color: rgba(255, 255, 255, 0.75);
+    border-color: transparent;
+    cursor: not-allowed;
+  }
+}
+
 /* range input pseudo-elements can't be styled with utilities */
 input[type="range"] {
   appearance: none;
