@@ -13,7 +13,7 @@
   },
   {
     "label": "Web App",
-    "meta": ["React", "Vite", "SCSS"],
+    "meta": ["React", "Vite", "Tailwind"],
     "link": "https://github.com/joeyskuo/drone-vision",
     "description": "React app demonstrating Faster R-CNN object detection via API integration on drone camera feed"
   },

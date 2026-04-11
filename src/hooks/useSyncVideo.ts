@@ -60,7 +60,7 @@ const useSyncVideo = () => {
     const togglePlay = useCallback(() => {
         const video = sourceRef.current;
         if (!video) return;
-        video.paused ? video.play() : video.pause();
+        if (video.paused) video.play(); else video.pause();
     }, [sourceRef]);
 
     const onSeek = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
