@@ -38,17 +38,17 @@ const MainLayout = () => {
 
             <section data-slot="about" className="grid grid-cols-2 gap-12">
                 <section data-slot="description">
-                    <div data-slot="section-label" className="font-sans text-base font-bold tracking-widest uppercase text-accent mb-4">About the Project</div>
+                    <div data-slot="section-label">About the Project</div>
                     <p className="text-text-primary leading-relaxed">A ROS 2-based drone is simulated in the Gazebo environment, where the onboard camera feed is captured via ROS topics and sampled into still frames. These frames are passed to a Faster R-CNN object detection model trained on synthetically generated data</p>
                     <div className="mt-4">
-                        <div data-slot="sub-label" className="font-sans font-bold text-[0.9rem] text-accent tracking-[0.05em] mb-2.5">Pending Improvements</div>
+                        <div data-slot="sub-label">Pending Improvements</div>
                         <ul data-slot="pending-list" className="flex flex-col gap-1.5 pl-5">
                             <li className="flex items-start gap-2.5 text-base text-text-muted py-2 px-3 bg-surface-alt rounded-lg border border-border leading-normal shadow-card before:content-['○'] before:text-accent-alt before:text-xs before:mt-0.5 before:shrink-0">[Completed] Train Faster R-CNN model to replace YOLOv8s model</li>
                             <li className="flex items-start gap-2.5 text-base text-text-muted py-2 px-3 bg-surface-alt rounded-lg border border-border leading-normal shadow-card before:content-['○'] before:text-accent-alt before:text-xs before:mt-0.5 before:shrink-0">Return prediction scores alongside bounding boxes</li>
                         </ul>
                     </div>
                     <div className="mt-5">
-                        <div data-slot="sub-label" className="font-sans font-bold text-[0.9rem] text-accent tracking-[0.05em] mb-2.5">Related Projects</div>
+                        <div data-slot="sub-label">Related Projects</div>
                         <div className="ml-5">
                             <ProjectLink
                                 symbol="◈"
@@ -62,7 +62,7 @@ const MainLayout = () => {
                     </div>
                 </section>
                 <section data-slot="modules">
-                    <div data-slot="section-label" className="font-sans text-base font-bold tracking-widest uppercase text-accent mb-4">Modules</div>
+                    <div data-slot="section-label">Modules</div>
                     <div className="flex flex-col gap-1.5">
                         {repos.map((repo) => (
                             <RepoInfo
@@ -78,7 +78,7 @@ const MainLayout = () => {
             </section>
 
             <section data-slot="architecture">
-                <div data-slot="section-label" className="font-sans text-base font-bold tracking-widest uppercase text-accent mb-4">Architecture</div>
+                <div data-slot="section-label">Architecture</div>
                 <img src="/architecture.png" className="w-full bg-surface-alt rounded-[20px] border border-border border-b-2 border-b-accent-alt shadow-card" alt="System architecture" />
             </section>
         </div>

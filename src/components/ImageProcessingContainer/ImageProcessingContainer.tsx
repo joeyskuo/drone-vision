@@ -7,7 +7,7 @@ const ImageProcessingContainer = () => {
     return (
         <div data-slot="output" className="grid grid-cols-2 gap-12 pt-5 px-12 pb-2.5 border-t border-border min-h-[400px]">
             <div data-slot="captured-frame">
-                <div data-slot="section-label" className="font-sans text-base font-bold tracking-widest uppercase text-accent mb-4">Captured Frame</div>
+                <div data-slot="section-label">Captured Frame</div>
                 <div className="w-full h-[295px]">
                     {capturedFrameUrl ? (
                         <img src={capturedFrameUrl} className="w-full" alt="Captured frame" />

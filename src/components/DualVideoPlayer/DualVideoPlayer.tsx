@@ -25,8 +25,8 @@ const DualVideoPlayer = () => {
     return (
         <figure data-slot="video-player" className="m-0 bg-[linear-gradient(160deg,var(--color-surface)_0%,var(--color-surface-alt)_100%)] border border-border border-t-2 border-t-accent-alt rounded-2xl overflow-hidden pt-3.5 shadow-card">
             <div data-slot="video-headers" className="grid grid-cols-2 pb-2">
-                <div data-slot="video-label" className="font-sans text-base font-bold tracking-widest uppercase text-accent pl-4">Drone Camera</div>
-                <div data-slot="video-label" className="font-sans text-base font-bold tracking-widest uppercase text-accent pl-4">World View</div>
+                <div data-slot="video-label">Drone Camera</div>
+                <div data-slot="video-label">World View</div>
             </div>
             <div data-slot="video-pair" className="grid grid-cols-2 gap-0.5 bg-video-gap">
                 <div data-slot="video-slot" className="bg-surface">
