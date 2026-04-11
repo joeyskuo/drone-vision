@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 interface ProjectLinkProps {
   symbol: string;
   name: string;
@@ -7,7 +9,7 @@ interface ProjectLinkProps {
   meta?: string[];
 }
 
-const ProjectLink = ({ symbol, name, href, accent, description, meta }: ProjectLinkProps) => {
+const ProjectLink = memo(({ symbol, name, href, accent, description, meta }: ProjectLinkProps) => {
     return (
         <a
             data-slot="project-link"
@@ -28,6 +30,6 @@ const ProjectLink = ({ symbol, name, href, accent, description, meta }: ProjectL
             <span className="text-[calc(1rem+1px)] ml-1.5 shrink-0 opacity-70" style={{ color: accent }}>↗</span>
         </a>
     );
-};
+});
 
 export default ProjectLink;

@@ -1,3 +1,5 @@
+import { memo, useMemo } from 'react';
+
 interface RepoInfoProps {
   label: string;
   meta?: string[];
@@ -5,8 +7,8 @@ interface RepoInfoProps {
   link: string;
 }
 
-const RepoInfo = ({ label, meta, description, link }: RepoInfoProps) => {
-    const metaString = meta?.join(' · ');
+const RepoInfo = memo(({ label, meta, description, link }: RepoInfoProps) => {
+    const metaString = useMemo(() => meta?.join(' · '), [meta]);
 
     return (
         <article data-slot="repo-info" className="flex flex-col bg-surface border border-border rounded-[14px] py-2.5 px-4 shadow-card">
@@ -28,6 +30,6 @@ const RepoInfo = ({ label, meta, description, link }: RepoInfoProps) => {
             <p className="text-base bg-surface-alt rounded-lg border border-border leading-normal py-2 px-3 m-0">{description}</p>
         </article>
     )
-}
+});
 
 export default RepoInfo;
