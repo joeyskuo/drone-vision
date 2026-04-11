@@ -1,12 +1,11 @@
 import RepoInfo from "../RepoInfo/RepoInfo";
 import ProjectLink from "../ProjectLink/ProjectLink";
-import SectionLabel from "../SectionLabel/SectionLabel";
 import repos from '../../data/repos.json';
 
 const AboutSection = () => (
     <section className="grid grid-cols-2 gap-12">
         <section>
-            <SectionLabel>About the Project</SectionLabel>
+            <div className="font-sans text-base font-bold tracking-widest uppercase text-accent mb-4">About the Project</div>
             <p className="text-text-primary leading-relaxed">A ROS 2-based drone is simulated in the Gazebo environment, where the onboard camera feed is captured via ROS topics and sampled into still frames. These frames are passed to a Faster R-CNN object detection model trained on synthetically generated data</p>
             <div className="mt-4">
                 <div className="font-sans font-bold text-[0.9rem] text-accent tracking-[0.05em] mb-2.5">Pending Improvements</div>
@@ -30,7 +29,7 @@ const AboutSection = () => (
             </div>
         </section>
         <section>
-            <SectionLabel>Modules</SectionLabel>
+            <div className="font-sans text-base font-bold tracking-widest uppercase text-accent mb-4">Modules</div>
             <div className="flex flex-col gap-1.5">
                 {repos.map((repo) => (
                     <RepoInfo

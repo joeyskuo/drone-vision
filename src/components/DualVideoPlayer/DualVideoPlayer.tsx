@@ -23,6 +23,7 @@ const DualVideoPlayer = () => {
     };
 
     return (
+        <section className="relative z-1">
         <figure className="surface-card m-0 border border-border border-t-2 border-t-accent-alt rounded-2xl overflow-hidden pt-3.5 shadow-card">
             <div className="grid grid-cols-2 pb-2">
                 <div className="font-sans text-base font-bold tracking-widest uppercase text-accent pl-4">Drone Camera</div>
@@ -84,6 +85,7 @@ const DualVideoPlayer = () => {
                 </span>
             </div>
         </figure>
+        </section>
     );
 };
 

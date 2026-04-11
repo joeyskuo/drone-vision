@@ -1,14 +1,14 @@
 import { useAppStore } from '../../stores/app';
 import PredictionContainer from '../PredictionContainer/PredictionContainer';
-import SectionLabel from '../SectionLabel/SectionLabel';
 
 const ImageProcessingContainer = () => {
     const capturedFrameUrl = useAppStore((s) => s.capturedFrameUrl);
 
     return (
+        <section className="surface-card relative z-1 flex flex-col min-h-[250px] border border-border border-t-2 border-t-accent-alt rounded-[20px] overflow-hidden shadow-card">
         <div className="grid grid-cols-2 gap-12 pt-5 px-12 pb-2.5 border-t border-border min-h-[400px]">
             <div>
-                <SectionLabel>Captured Frame</SectionLabel>
+                <div className="font-sans text-base font-bold tracking-widest uppercase text-accent mb-4">Captured Frame</div>
                 <div className="w-full h-[295px]">
                     {capturedFrameUrl ? (
                         <img src={capturedFrameUrl} className="w-full" alt="Captured frame" />
@@ -22,6 +22,7 @@ const ImageProcessingContainer = () => {
             </div>
             <PredictionContainer />
         </div>
+        </section>
     )
 };
 
