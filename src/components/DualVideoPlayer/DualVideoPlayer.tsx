@@ -1,4 +1,5 @@
-import useSyncVideo from "../../hooks/useSyncVideo";
+import { useRef, useState } from "react";
+import { useVideoStore } from "../../stores/video";
 
 const formatTime = (t: number) => {
     if (!isFinite(t) || isNaN(t)) return '0:00';
@@ -8,7 +9,24 @@ const formatTime = (t: number) => {
 };
 
 const DualVideoPlayer = () => {
-    const { sourceRef, worldRef, playing, currentTime, duration, togglePlay, onSeek } = useSyncVideo();
+    const sourceRef = useVideoStore((s) => s.sourceRef);
+    const worldRef = useRef<HTMLVideoElement>(null);
+
+    const [playing, setPlaying] = useState(false);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+
+    const togglePlay = () => {
+        const video = sourceRef.current;
+        if (!video) return;
+        if (video.paused) video.play(); else video.pause();
+    };
+
+    const onSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const video = sourceRef.current;
+        if (!video) return;
+        video.currentTime = Number(e.target.value);
+    };
 
     return (
         <figure data-slot="video-player" className="m-0 bg-[linear-gradient(160deg,var(--color-surface)_0%,var(--color-surface-alt)_100%)] border border-border border-t-2 border-t-accent-alt rounded-2xl overflow-hidden pt-3.5 shadow-card">
@@ -18,7 +36,30 @@ const DualVideoPlayer = () => {
             </div>
             <div data-slot="video-pair" className="grid grid-cols-2 gap-0.5 bg-video-gap">
                 <div data-slot="video-slot" className="bg-surface">
-                    <video ref={sourceRef} className="block w-full">
+                    <video
+                        ref={sourceRef}
+                        className="block w-full"
+                        onTimeUpdate={(e) => {
+                            const t = e.currentTarget.currentTime;
+                            setCurrentTime(t);
+                            const world = worldRef.current;
+                            if (world && Math.abs(t - world.currentTime) > 0.1)
+                                world.currentTime = t;
+                        }}
+                        onPlay={() => {
+                            setPlaying(true);
+                            worldRef.current?.play();
+                        }}
+                        onPause={() => {
+                            setPlaying(false);
+                            worldRef.current?.pause();
+                        }}
+                        onSeeked={(e) => {
+                            if (worldRef.current)
+                                worldRef.current.currentTime = e.currentTarget.currentTime;
+                        }}
+                        onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+                    >
                         <source src="/videos/cam_soccer.mp4" type="video/mp4" />
                     </video>
                 </div>
