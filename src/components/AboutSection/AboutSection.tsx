@@ -32,13 +32,7 @@ const AboutSection = () => (
             <div className="font-sans text-base font-bold tracking-widest uppercase text-accent mb-4">Modules</div>
             <div className="flex flex-col gap-1.5">
                 {repos.map((repo) => (
-                    <RepoInfo
-                        key={repo.link}
-                        label={repo.label}
-                        meta={repo.meta}
-                        link={repo.link}
-                        description={repo.description}
-                    />
+                    <RepoInfo key={repo.link} {...repo} />
                 ))}
             </div>
         </section>
