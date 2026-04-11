@@ -3,24 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useAppStore } from '../stores/app';
 import { useVideoStore } from '../stores/video';
 import { detectObjects } from '../ml/objectDetector';
-
-function captureFrameFromVideo(video: HTMLVideoElement) {
-    const canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext('2d')!.drawImage(video, 0, 0, canvas.width, canvas.height);
-    return canvas;
-}
-
-function canvasToBlob(canvas: HTMLCanvasElement): Promise<Blob> {
-    return new Promise((resolve, reject) => {
-        canvas.toBlob(
-            (blob) => (blob ? resolve(blob) : reject(new Error('Failed to create blob'))),
-            'image/jpeg',
-            0.95,
-        );
-    });
-}
+import { captureFrameFromVideo, canvasToBlob } from '../lib/canvas';
 
 const useCaptureFrame = () => {
     const setCapturedFrameUrl = useAppStore((s) => s.setCapturedFrameUrl);
