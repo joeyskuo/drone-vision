@@ -52,20 +52,8 @@ body {
   max-width: 1280px;
 }
 
-[data-slot="section-label"] {
-  @apply font-sans text-base font-bold tracking-widest uppercase text-accent mb-4;
-}
-
-[data-slot="sub-label"] {
-  @apply font-sans font-bold text-[0.9rem] text-accent tracking-[0.05em] mb-2.5;
-}
-
-[data-slot="video-label"] {
-  @apply font-sans text-base font-bold tracking-widest uppercase text-accent pl-4;
-}
-
 /* range input pseudo-elements can't be styled with utilities */
-input[type="range"][data-slot="seek-bar"] {
+input[type="range"] {
   appearance: none;
   -webkit-appearance: none;
   background: transparent;

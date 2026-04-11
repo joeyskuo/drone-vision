@@ -12,7 +12,6 @@ interface ProjectLinkProps {
 const ProjectLink = memo(({ symbol, name, href, accent, description, meta }: ProjectLinkProps) => {
     return (
         <a
-            data-slot="project-link"
             className="flex items-center gap-3.5 py-3.5 px-[18px] bg-surface border border-border rounded-xl no-underline text-text-primary shadow-sm transition-[box-shadow,background-color] w-fit hover:bg-surface-alt hover:shadow-card-hover"
             href={href}
             target="_blank"
