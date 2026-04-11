@@ -20,7 +20,7 @@ A React web app showcasing a custom-trained object detection model, applied to R
 
 | Layer | Tech |
 |---|---|
-| Frontend | React 19, Vite, SCSS, Axios |
+| Frontend | React 19, Tailwind, React-Query, Zustand, Vite, Axios |
 | Inference API | FastAPI, Faster R-CNN, Docker, Cloud Run |
 | BFF | Node.js, Express, Railway |
 | Simulation | ROS 2, Gazebo |
