@@ -1,4 +1,3 @@
-import { memo } from "react";
 import useSyncVideo from "../../hooks/useSyncVideo";
 
 const formatTime = (t: number) => {
@@ -8,7 +7,7 @@ const formatTime = (t: number) => {
     return `${m}:${s}`;
 };
 
-const DualVideoPlayer = memo(() => {
+const DualVideoPlayer = () => {
     const { sourceRef, worldRef, playing, currentTime, duration, togglePlay, onSeek } = useSyncVideo();
 
     return (
@@ -53,6 +52,6 @@ const DualVideoPlayer = memo(() => {
             </div>
         </figure>
     );
-});
+};
 
 export default DualVideoPlayer;

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useVideoStore } from "../stores/video";
 
 const useSyncVideo = () => {
@@ -57,17 +57,17 @@ const useSyncVideo = () => {
         };
     }, [sourceRef]);
 
-    const togglePlay = useCallback(() => {
+    const togglePlay = () => {
         const video = sourceRef.current;
         if (!video) return;
         if (video.paused) video.play(); else video.pause();
-    }, [sourceRef]);
+    };
 
-    const onSeek = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const onSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
         const video = sourceRef.current;
         if (!video) return;
         video.currentTime = Number(e.target.value);
-    }, [sourceRef]);
+    };
 
     return { sourceRef, worldRef, playing, currentTime, duration, togglePlay, onSeek };
 };

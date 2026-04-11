@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { useAppStore } from '../stores/app';
 import { useVideoStore } from '../stores/video';
@@ -33,7 +33,7 @@ const useCaptureFrame = () => {
         onSuccess: (url) => setPredictionUrl(url),
     });
 
-    const handleCapture = useCallback(async () => {
+    const handleCapture = async () => {
         const video = sourceRef.current;
         if (!video) return;
 
@@ -45,7 +45,7 @@ const useCaptureFrame = () => {
 
         const blob = await canvasToBlob(canvas);
         detection.mutate(blob);
-    }, [sourceRef, setCapturedFrameUrl, setPredictionUrl, detection]);
+    };
 
     return {
         handleCapture,
