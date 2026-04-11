@@ -7,7 +7,6 @@ export async function detectObjects(blob: Blob): Promise<string> {
   formData.append('file', blob, 'image.jpg');
 
   const response = await axios.post(BFF_ENDPOINT + '/detect', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
     responseType: 'blob',
   });
 

@@ -11,5 +11,9 @@ export const useAppStore = create<AppStore>((set) => ({
   capturedFrameUrl: null,
   predictionUrl: null,
   setCapturedFrameUrl: (url) => set({ capturedFrameUrl: url }),
-  setPredictionUrl: (url) => set({ predictionUrl: url }),
+  setPredictionUrl: (url) =>
+    set((state) => {
+      if (state.predictionUrl) URL.revokeObjectURL(state.predictionUrl);
+      return { predictionUrl: url };
+    }),
 }));
