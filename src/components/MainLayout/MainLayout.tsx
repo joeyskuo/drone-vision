@@ -1,9 +1,12 @@
+import { useQuery } from '@tanstack/react-query';
 import useCaptureFrame from '../../hooks/useCaptureFrame';
+import { warmUp } from '../../ml/objectDetector';
 import DualVideoPlayer from "../DualVideoPlayer/DualVideoPlayer";
 import ImageProcessingContainer from "../ImageProcessingContainer/ImageProcessingContainer";
 import AboutSection from "../AboutSection/AboutSection";
 
 const MainLayout = () => {
+    useQuery({ queryKey: ['warmup'], queryFn: warmUp, staleTime: Infinity, retry: 1 });
     const { handleCapture, captureActivated, isDetecting } = useCaptureFrame();
 
     return (
