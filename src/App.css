@@ -1,9 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  --color-bg: #dde6ed;
+  --color-surface: #eaf1f6;
+  --color-surface-alt: #f4f8fb;
+  --color-border: rgba(82, 109, 130, 0.18);
+  --color-border-strong: rgba(39, 88, 122, 0.25);
+  --color-accent: #27587a;
+  --color-accent-hover: #1d4a66;
+  --color-accent-active: #163a52;
+  --color-accent-alt: #3a8fa8;
+  --color-accent-muted: #8fafc0;
+  --color-text-primary: #1a2e3b;
+  --color-text-muted: #526d82;
+  --color-video-gap: rgba(39, 88, 122, 0.55);
+
+  --shadow-card: 0 4px 24px rgba(39, 88, 122, 0.10);
+  --shadow-card-hover: 0 4px 18px rgba(39, 88, 122, 0.14);
+  --shadow-sm: 0 2px 12px rgba(39, 88, 122, 0.08);
+
+  --animate-shine: shine 10s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  15%, 100% {
+    transform: translateX(650%) skewX(-15deg);
+  }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
 #root {
   width: 100%;
   max-width: 1280px;
-  height: 100%;
 }
 
-.inactive-link {
-  pointer-events: none;
+/* range input pseudo-elements can't be styled with utilities */
+input[type="range"][data-slot="seek-bar"] {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+
+  &::-webkit-slider-runnable-track {
+    height: 4px;
+    background: var(--color-border);
+    border-radius: 2px;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-accent-alt);
+    margin-top: -5px;
+    cursor: pointer;
+  }
+
+  &::-moz-range-track {
+    height: 4px;
+    background: var(--color-border);
+    border-radius: 2px;
+  }
+
+  &::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-accent-alt);
+    border: none;
+    cursor: pointer;
+  }
 }

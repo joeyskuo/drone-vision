@@ -1,5 +1,3 @@
-import './ProjectLink.css';
-
 interface ProjectLinkProps {
   symbol: string;
   name: string;
@@ -11,16 +9,23 @@ interface ProjectLinkProps {
 
 const ProjectLink = ({ symbol, name, href, accent, description, meta }: ProjectLinkProps) => {
     return (
-        <a className="project-link" href={href} target="_blank" rel="noreferrer" style={{ '--project-accent': accent } as React.CSSProperties}>
-            <div className="project-link--body">
-                <div className="project-link--name">
-                    <span className="project-link--symbol">{symbol}</span>
+        <a
+            data-slot="project-link"
+            className="flex items-center gap-3.5 py-3.5 px-[18px] bg-surface border border-border rounded-xl no-underline text-text-primary shadow-sm transition-[box-shadow,background-color] w-fit hover:bg-surface-alt hover:shadow-card-hover"
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            style={{ borderLeftWidth: 3, borderLeftColor: accent }}
+        >
+            <div className="flex flex-col gap-0.5">
+                <div className="flex items-center gap-1.5 font-bold text-[calc(0.95rem+1px)] tracking-tight" style={{ color: accent }}>
+                    <span className="text-[calc(1.3rem+1px)] leading-none" style={{ color: accent }}>{symbol}</span>
                     {name}
                 </div>
-                {meta && <span className="project-link--meta">{meta.join(' · ')}</span>}
-                <span className="project-link--description">{description}</span>
+                {meta && <span className="text-[calc(0.8rem+1px)] opacity-85" style={{ color: accent }}>{meta.join(' · ')}</span>}
+                <span className="text-[calc(0.85rem+1px)] text-text-primary">{description}</span>
             </div>
-            <span className="project-link--arrow">↗</span>
+            <span className="text-[calc(1rem+1px)] ml-1.5 shrink-0 opacity-70" style={{ color: accent }}>↗</span>
         </a>
     );
 };

@@ -4,15 +4,15 @@ const PredictionContainer = () => {
     const predictionUrl = useAppStore((s) => s.predictionUrl);
 
     return (
-        <div className="prediction-container">
-            <div className="section-label">Predictions</div>
-            <div className="prediction-container-results">
+        <div data-slot="predictions" className="flex flex-col h-full w-full">
+            <div data-slot="section-label" className="font-sans text-base font-bold tracking-widest uppercase text-accent mb-4">Predictions</div>
+            <div data-slot="results" className="h-[295px] bg-surface-alt rounded-[10px] border border-border overflow-hidden text-text-muted text-base tracking-[0.05em] flex items-center justify-center flex-col gap-2.5">
                 {predictionUrl ? (
-                    <img src={predictionUrl} style={{ width: '100%' }} alt="Detection results" />
+                    <img src={predictionUrl} className="w-full" alt="Detection results" />
                 ) : (
                     <>
-                        <span className='prediction-placeholder--icon'>⬚</span>
-                        <span className='prediction-placeholder--text'>Confidence scores &mdash; to be implemented</span>
+                        <span className="text-[2.5rem]">⬚</span>
+                        <span>Confidence scores &mdash; to be implemented</span>
                     </>
                 )}
             </div>
