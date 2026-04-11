@@ -1,4 +1,3 @@
-import { useAppStore } from '../../stores/app';
 import useCaptureFrame from '../../hooks/useCaptureFrame';
 import DualVideoPlayer from "../DualVideoPlayer/DualVideoPlayer";
 import ImageProcessingContainer from "../ImageProcessingContainer/ImageProcessingContainer";
@@ -8,8 +7,7 @@ import repos from '../../data/repos.json';
 import './MainLayout.scss';
 
 const MainLayout = () => {
-    const isDetecting = useAppStore((s) => s.isDetecting);
-    const { handleCapture, captureActivated } = useCaptureFrame();
+    const { handleCapture, captureActivated, isDetecting } = useCaptureFrame();
 
     return (
         <div id="main-layout">
