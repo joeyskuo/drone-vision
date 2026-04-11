@@ -1,16 +1,14 @@
-// TODO: Refactor
 import { useEffect, useRef, useState } from "react";
-import { useVideoSync } from "../context/VideoSyncContext";
+import { useVideoStore } from "../stores/video";
 
 const useSyncVideo = () => {
-    const { sourceRef } = useVideoSync();
+    const sourceRef = useVideoStore((s) => s.sourceRef);
     const worldRef = useRef<HTMLVideoElement>(null);
 
     const [playing, setPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
 
-    // Sync world video to camera video
     useEffect(() => {
         const source = sourceRef.current;
         const target = worldRef.current;
@@ -37,7 +35,6 @@ const useSyncVideo = () => {
         };
     }, [sourceRef]);
 
-    // Drive controls UI from source video events
     useEffect(() => {
         const video = sourceRef.current;
         if (!video) return;

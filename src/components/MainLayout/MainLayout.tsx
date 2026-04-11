@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { AppContext } from '../../context/AppContext';
+import { useAppStore } from '../../stores/app';
 import useCaptureFrame from '../../hooks/useCaptureFrame';
 import DualVideoPlayer from "../DualVideoPlayer/DualVideoPlayer";
 import ImageProcessingContainer from "../ImageProcessingContainer/ImageProcessingContainer";
@@ -9,7 +8,7 @@ import repos from '../../data/repos.json';
 import './MainLayout.scss';
 
 const MainLayout = () => {
-    const { appState } = useContext(AppContext);
+    const isDetecting = useAppStore((s) => s.isDetecting);
     const { handleCapture, captureActivated } = useCaptureFrame();
 
     return (
@@ -23,8 +22,8 @@ const MainLayout = () => {
                     <DualVideoPlayer/>
             </section>
             <div className="video-capture-connector">
-                <button className={`capture-btn${captureActivated ? ' activated' : ''}`} onClick={handleCapture} disabled={appState.isLoading}>
-                    {appState.isLoading ? 'Detecting...' : 'Capture Frame'}
+                <button className={`capture-btn${captureActivated ? ' activated' : ''}`} onClick={handleCapture} disabled={isDetecting}>
+                    {isDetecting ? 'Detecting...' : 'Capture Frame'}
                 </button>
             </div>
             <section className="image-process-section">

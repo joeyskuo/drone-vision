@@ -1,46 +1,36 @@
-// TODO: Refactor
-import { useContext, useState } from 'react';
-import { AppContext } from '../context/AppContext';
-import { useVideoSync } from '../context/VideoSyncContext';
+import { useState } from 'react';
+import { useAppStore } from '../stores/app';
+import { useVideoStore } from '../stores/video';
 import { detectObjects } from '../ml/objectDetector';
 
 const useCaptureFrame = () => {
-    const { appState, setAppState } = useContext(AppContext);
-    const { sourceRef } = useVideoSync();
+    const { setDetecting, setCapturedFrameUrl, setPredictionUrl } = useAppStore();
+    const sourceRef = useVideoStore((s) => s.sourceRef);
     const [captureActivated, setCaptureActivated] = useState(false);
 
     const handleCapture = async () => {
         setCaptureActivated(true);
         const video = sourceRef.current;
+        if (!video) return;
 
-        const frameCanvas = document.createElement('canvas');
-        frameCanvas.width = video!.videoWidth;
-        frameCanvas.height = video!.videoHeight;
-        const ctx = frameCanvas.getContext('2d');
-        ctx!.drawImage(video!, 0, 0, frameCanvas.width, frameCanvas.height);
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const ctx = canvas.getContext('2d')!;
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        const container = document.querySelector('.captured-frame-root');
-        const rawImg = document.createElement('img');
-        rawImg.src = frameCanvas.toDataURL('image/jpeg', 0.95);
-        rawImg.style.width = '100%';
-        container!.innerHTML = '';
-        container!.appendChild(rawImg);
+        const frameDataUrl = canvas.toDataURL('image/jpeg', 0.95);
+        setCapturedFrameUrl(frameDataUrl);
+        setPredictionUrl(null);
+        setDetecting(true);
 
-        setAppState({ isLoading: true });
-
-        frameCanvas.toBlob(async (blob) => {
+        canvas.toBlob(async (blob) => {
             if (!blob) return;
             try {
                 const resultUrl = await detectObjects(blob);
-                const resultImg = document.createElement('img');
-                resultImg.src = resultUrl;
-                resultImg.style.width = '100%';
-                container!.innerHTML = '';
-                container!.appendChild(resultImg);
-            } catch (error) {
-                throw error;
+                setPredictionUrl(resultUrl);
             } finally {
-                setAppState({ isLoading: false });
+                setDetecting(false);
             }
         }, 'image/jpeg', 0.95);
     };
