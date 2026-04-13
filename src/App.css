@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -17,7 +17,7 @@
   --color-text-muted: #526d82;
   --color-video-gap: rgba(39, 88, 122, 0.55);
 
-  --shadow-card: 0 4px 24px rgba(39, 88, 122, 0.10);
+  --shadow-card: 0 4px 24px rgba(39, 88, 122, 0.1);
   --shadow-card-hover: 0 4px 18px rgba(39, 88, 122, 0.14);
   --shadow-sm: 0 2px 12px rgba(39, 88, 122, 0.08);
 
@@ -28,7 +28,8 @@
   0% {
     transform: translateX(-100%) skewX(-15deg);
   }
-  15%, 100% {
+  15%,
+  100% {
     transform: translateX(650%) skewX(-15deg);
   }
 }
@@ -92,12 +93,12 @@ body {
     pointer-events: none;
   }
 
-  &[data-state="activated"]::after,
-  &[data-state="detecting"]::after {
+  &[data-state='activated']::after,
+  &[data-state='detecting']::after {
     display: none;
   }
 
-  &[data-state="detecting"] {
+  &[data-state='detecting'] {
     background-color: var(--color-accent-muted);
     color: rgba(255, 255, 255, 0.75);
     border-color: transparent;
@@ -106,7 +107,7 @@ body {
 }
 
 /* range input pseudo-elements can't be styled with utilities */
-input[type="range"] {
+input[type='range'] {
   appearance: none;
   -webkit-appearance: none;
   background: transparent;
