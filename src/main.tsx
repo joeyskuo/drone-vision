@@ -1,21 +1,15 @@
-import './instrument'
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App'
-import * as Sentry from "@sentry/react"
+import './instrument';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from '@/App';
 
-const rootElement = document.getElementById('root')!;
+const rootElement = document.getElementById('root');
+if (!rootElement) throw new Error('Root element #root not found');
 
-const root = createRoot(rootElement, {
-  onUncaughtError: Sentry.reactErrorHandler((error, errorInfo) => {
-    console.warn("Uncaught error", error, errorInfo.componentStack);
-  }),
-  onCaughtError: Sentry.reactErrorHandler(),
-  onRecoverableError: Sentry.reactErrorHandler(),
-});
+const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
     <App />
   </StrictMode>,
-)
+);

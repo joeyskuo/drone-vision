@@ -1,9 +1,12 @@
+import type { RefObject } from 'react';
 import { create } from 'zustand';
 
 interface VideoStore {
-  sourceRef: React.RefObject<HTMLVideoElement | null>;
+  readonly sourceRef: RefObject<HTMLVideoElement | null>;
 }
 
 export const useVideoStore = create<VideoStore>(() => ({
   sourceRef: { current: null },
 }));
+
+export const selectSourceRef = (s: VideoStore): RefObject<HTMLVideoElement | null> => s.sourceRef;

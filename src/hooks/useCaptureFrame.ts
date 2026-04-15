@@ -1,40 +1,67 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { useAppStore } from '../stores/app';
-import { useVideoStore } from '../stores/video';
-import { detectObjects } from '../ml/objectDetector';
-import { captureFrameFromVideo, canvasToBlob } from '../lib/canvas';
+import { detectObjects, type DetectionResult } from '@/api/detection';
+import { mutationKeys } from '@/api/queryKeys';
+import { captureFrameFromVideo, canvasToBlob, canvasToDataUrl } from '@/lib/canvas';
+import { logger } from '@/lib/logger';
+import { useFrameActions } from '@/stores/app';
+import { useVideoStore } from '@/stores/video';
 
-const useCaptureFrame = () => {
-    const setCapturedFrameUrl = useAppStore((s) => s.setCapturedFrameUrl);
-    const setPredictionUrl = useAppStore((s) => s.setPredictionUrl);
-    const sourceRef = useVideoStore((s) => s.sourceRef);
-    const [captureActivated, setCaptureActivated] = useState(false);
+export interface UseCaptureFrameResult {
+  readonly handleCapture: () => Promise<void>;
+  readonly captureActivated: boolean;
+  readonly isDetecting: boolean;
+  readonly error: unknown;
+}
 
-    const detection = useMutation({
-        mutationFn: detectObjects,
-        onSuccess: (url) => setPredictionUrl(url),
-    });
+export function useCaptureFrame(): UseCaptureFrameResult {
+  const { setCapturedFrameUrl, setPredictionUrl } = useFrameActions();
+  const sourceRef = useVideoStore((s) => s.sourceRef);
+  const [captureActivated, setCaptureActivated] = useState(false);
+  const controllerRef = useRef<AbortController | null>(null);
 
-    const handleCapture = async () => {
-        const video = sourceRef.current;
-        if (!video) return;
+  const mutation = useMutation<DetectionResult, unknown, Blob>({
+    mutationKey: mutationKeys.detection.detect,
+    mutationFn: async (blob) => {
+      controllerRef.current?.abort();
+      const controller = new AbortController();
+      controllerRef.current = controller;
+      return detectObjects(blob, { signal: controller.signal });
+    },
+    onSuccess: (result) => setPredictionUrl(result.imageUrl),
+    onError: (error) => logger.error('frame detection failed', error),
+  });
 
-        setCaptureActivated(true);
-        setPredictionUrl(null);
+  useEffect(
+    () => () => {
+      controllerRef.current?.abort();
+    },
+    [],
+  );
 
-        const canvas = captureFrameFromVideo(video);
-        setCapturedFrameUrl(canvas.toDataURL('image/jpeg', 0.95));
+  const handleCapture = useCallback(async () => {
+    const video = sourceRef.current;
+    if (!video) return;
 
-        const blob = await canvasToBlob(canvas);
-        detection.mutate(blob);
-    };
+    setCaptureActivated(true);
+    setPredictionUrl(null);
 
-    return {
-        handleCapture,
-        captureActivated,
-        isDetecting: detection.isPending,
-    };
-};
+    try {
+      const canvas = captureFrameFromVideo(video);
+      setCapturedFrameUrl(canvasToDataUrl(canvas));
+      const blob = await canvasToBlob(canvas);
+      mutation.mutate(blob);
+    } catch (error) {
+      logger.error('frame capture failed', error);
+    }
+  }, [mutation, setCapturedFrameUrl, setPredictionUrl, sourceRef]);
+
+  return {
+    handleCapture,
+    captureActivated,
+    isDetecting: mutation.isPending,
+    error: mutation.error,
+  };
+}
 
 export default useCaptureFrame;
