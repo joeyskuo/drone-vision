@@ -3,7 +3,12 @@ import type { Repo } from '@/types/repo';
 
 export type RepoInfoProps = Repo;
 
-function RepoInfoComponent({ label, meta, description, link }: RepoInfoProps): ReactNode {
+const RepoInfo = memo(function RepoInfo({
+  label,
+  meta,
+  description,
+  link,
+}: RepoInfoProps): ReactNode {
   const metaString = meta.join(' \u00B7 ');
 
   return (
@@ -28,9 +33,6 @@ function RepoInfoComponent({ label, meta, description, link }: RepoInfoProps): R
       </p>
     </article>
   );
-}
-
-const RepoInfo = memo(RepoInfoComponent);
-RepoInfo.displayName = 'RepoInfo';
+});
 
 export default RepoInfo;

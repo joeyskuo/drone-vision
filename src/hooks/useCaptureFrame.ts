@@ -63,5 +63,3 @@ export function useCaptureFrame(): UseCaptureFrameResult {
     error: mutation.error,
   };
 }
-
-export default useCaptureFrame;

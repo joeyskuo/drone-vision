@@ -9,7 +9,7 @@ export interface ProjectLinkProps {
   readonly meta?: readonly string[];
 }
 
-function ProjectLinkComponent({
+const ProjectLink = memo(function ProjectLink({
   symbol,
   name,
   href,
@@ -56,9 +56,6 @@ function ProjectLinkComponent({
       </span>
     </a>
   );
-}
-
-const ProjectLink = memo(ProjectLinkComponent);
-ProjectLink.displayName = 'ProjectLink';
+});
 
 export default ProjectLink;

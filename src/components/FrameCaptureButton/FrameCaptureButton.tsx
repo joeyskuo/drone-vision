@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import useCaptureFrame from '@/hooks/useCaptureFrame';
+import { useCaptureFrame } from '@/hooks/useCaptureFrame';
 
 type CaptureState = 'idle' | 'activated' | 'detecting';
 

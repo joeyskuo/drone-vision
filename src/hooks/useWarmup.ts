@@ -5,7 +5,7 @@ import { queryKeys } from '@/api/queryKeys';
 export function useWarmup() {
   return useQuery({
     queryKey: queryKeys.detection.warmup(),
-    queryFn: ({ signal }) => warmUp({ signal }).then(() => true as const),
+    queryFn: ({ signal }) => warmUp({ signal }).then(() => true),
     staleTime: Infinity,
     gcTime: Infinity,
     retry: 1,
