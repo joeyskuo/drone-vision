@@ -24,12 +24,12 @@
     "prepare": "husky || true"
   },
   "dependencies": {
-    "@sentry/react": "^10.38.0",
-    "@tanstack/react-query": "^5.97.0",
-    "axios": "^1.15.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "zod": "^3.24.1",
+    "@sentry/react": "^10.49.0",
+    "@tanstack/react-query": "^5.99.2",
+    "axios": "^1.15.1",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "zod": "^4.3.6",
     "zustand": "^5.0.12"
   },
   "devDependencies": {
@@ -40,7 +40,7 @@
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/node": "^22.10.5",
-    "@types/react": "^19.2.5",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
     "@vitest/coverage-v8": "^2.1.8",
